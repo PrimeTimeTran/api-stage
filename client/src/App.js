@@ -14,11 +14,6 @@ class App extends Component {
     super(props)
     this.props.initialPosts();
   }
-
-  componentWillMount() {
-    console.log('Mounted!')
-    console.log('State: ', this.props)
-  }
   removePost(postId) {
     this.props.removePost(postId);
   }

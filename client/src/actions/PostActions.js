@@ -9,6 +9,7 @@ import {
 } from './types'
 
 export const removePost = (postId) => {
+  console.log('Removing Post: ', postId)
   axios.delete(`${API_ROOT}/posts/${postId}`)
   return (dispatch) => {
     dispatch({ type: POST_REMOVE, payload: postId })
