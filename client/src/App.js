@@ -26,10 +26,10 @@ class App extends Component {
 
         <Grid>
           <Row className="show-grid">
-            <Col xs={12} md={12} style={{ backgroundColor: 'yellow' }}>
-              {posts.map(post => {
+            <Col xs={12} md={10} xsOffset={1} style={{ backgroundColor: 'yellow' }}>
+              {/* {posts.map(post => {
                 return (<Post post={post} key={post.id} onRemoveList={this.removePost.bind(this)} />)
-              })}
+              })} */}
             </Col>
           </Row>
         </Grid>

@@ -5,8 +5,7 @@ module Api::V1
     # GET /posts
     def index
       @posts = Post.all
-
-      render json: @posts
+      render 'api/v1/posts/index'
     end
 
     # GET /posts/1
