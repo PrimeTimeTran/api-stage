@@ -7,6 +7,7 @@ import { initialPosts, removePost } from './actions/PostActions';
 
 import './App.css';
 import NavbarContainer from './components/NavbarContainer'
+import Post from './components/Post';
 
 class App extends Component {
   constructor(props) {
@@ -14,11 +15,16 @@ class App extends Component {
     this.props.initialPosts();
   }
 
-  componentDidMount() {
+  componentWillMount() {
     console.log('Mounted!')
+    console.log('State: ', this.props)
+  }
+  removePost(postId) {
+    this.props.removePost(postId);
   }
 
   render() {
+    const { posts } = this.props
     return (
       <div>
         <NavbarContainer />
@@ -26,7 +32,9 @@ class App extends Component {
         <Grid>
           <Row className="show-grid">
             <Col xs={12} md={12} style={{ backgroundColor: 'yellow' }}>
-              Welcome!
+              {posts.map(post => {
+                return (<Post post={post} key={post.id} onRemoveList={this.removePost.bind(this)} />)
+              })}
             </Col>
           </Row>
         </Grid>
