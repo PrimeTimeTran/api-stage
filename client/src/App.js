@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { createStore, applyMiddleware, bindActionCreators } from 'redux';
-import { Provider, connect } from 'react-redux';
-import ReduxThunk from 'redux-thunk';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import reducers from './reducers';
 import { initialPosts, removePost } from './actions/PostActions';
 
 import './App.css';
 import NavbarContainer from './components/NavbarContainer'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.props.initialPosts();
+  }
+
+  componentDidMount() {
+    console.log('Mounted!')
+  }
+
   render() {
     return (
-        <div>
-          <NavbarContainer />
+      <div>
+        <NavbarContainer />
 
-          <Grid>
-            <Row className="show-grid">
-              <Col xs={12} md={12} style={{ backgroundColor: 'yellow' }}>
-                Welcome!
-              </Col>
-            </Row>
-          </Grid>
-        </div>
+        <Grid>
+          <Row className="show-grid">
+            <Col xs={12} md={12} style={{ backgroundColor: 'yellow' }}>
+              Welcome!
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
