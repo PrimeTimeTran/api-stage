@@ -1,3 +1,5 @@
+Stage.create name: 'Vinhomes Landmark 3'
+
 25.times do
   post = Post.new(
     user_id: 1,
@@ -6,3 +8,4 @@
   post.created_at = Faker::Time.between(DateTime.now - 7, DateTime.now)
   post.save
 end
+

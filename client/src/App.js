@@ -7,7 +7,6 @@ import { initialPosts, removePost } from './actions/PostActions';
 
 import './App.css';
 import { NavbarContainer, PostsContainer } from './containers'
-import { Post } from './components';
 import NewPostForm from './components/NewPostForm'
 
 class App extends Component {
