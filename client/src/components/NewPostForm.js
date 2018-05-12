@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addPost } from '../actions/PostActions';
-import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, Glyphicon } from 'react-bootstrap'
+import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
 
  class NewPostForm extends Component {
   constructor(props) {

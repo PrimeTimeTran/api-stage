@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { initialPosts, removePost } from './actions/PostActions';
 
 import './App.css';
-import { NavbarContainer } from './containers'
+import { NavbarContainer, PostsContainer } from './containers'
 import { Post } from './components';
 import NewPostForm from './components/NewPostForm'
 
@@ -26,16 +26,14 @@ class App extends Component {
         <NavbarContainer />
 
         <Row className="show-grid">
-          <Col xs={12} md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
+          <Col xsHidden md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
             Hello World
           </Col>
           <Col xs={12} md={6}>
             <NewPostForm />
-            {posts.map(post => {
-              return (<Post post={post} key={post.id} onRemoveList={this.removePost.bind(this)} />)
-            })}
+            <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
           </Col>
-          <Col xs={12} md={2} style={{ backgroundColor: '#7caeff' }}>
+          <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
             Hello World
           </Col>
         </Row>

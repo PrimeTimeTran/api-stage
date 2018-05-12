@@ -19,7 +19,6 @@ export const initialPosts = () => {
   return (dispatch) => {
     axios.get(`${API_ROOT}/posts.json`)
       .then(response => {
-        console.log('Response: ', response)
         dispatch({ type: POST_INITIAL, payload: response.data })
       })
   }
