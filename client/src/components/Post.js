@@ -3,7 +3,6 @@ import Moment from 'react-moment';
 import { Panel } from 'react-bootstrap'
 
 const Post = ({ post, onRemoveList }) => {
-  console.log('User: ', post.user)
   return (
     <Panel bsStyle='primary' key={post.id}>
       <Panel.Heading style={styles.headerStyle} onClick={() => onRemoveList(post.id)}>

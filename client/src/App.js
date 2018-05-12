@@ -8,6 +8,7 @@ import { initialPosts, removePost } from './actions/PostActions';
 import './App.css';
 import NavbarContainer from './components/NavbarContainer'
 import Post from './components/Post';
+import NewPostForm from './components/NewPostForm'
 
 class App extends Component {
   constructor(props) {
@@ -21,18 +22,25 @@ class App extends Component {
   render() {
     const { posts } = this.props
     return (
-      <div>
+      <div style={{ backgroundColor: '#e9ebee' }}>
         <NavbarContainer />
 
-        <Grid>
+
           <Row className="show-grid">
-            <Col xs={12} md={10} xsOffset={1} style={{ backgroundColor: 'yellow' }}>
+            <Col xs={12} md={1} mdOffset={1} style={{ backgroundColor: 'pink' }}>
+              Hello World
+            </Col>
+            <Col xs={12} md={8}>
+              <NewPostForm />
               {posts.map(post => {
                 return (<Post post={post} key={post.id} onRemoveList={this.removePost.bind(this)} />)
               })}
             </Col>
+            <Col xs={12} md={1} style={{ backgroundColor: '#7caeff' }}>
+              Hello World
+            </Col>
           </Row>
-        </Grid>
+
       </div>
     );
   }

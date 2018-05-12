@@ -4,7 +4,7 @@ module Api::V1
 
     # GET /posts
     def index
-      @posts = Post.all
+      @posts = Post.all.order("created_at DESC")
       render 'api/v1/posts/index'
     end
 
@@ -18,7 +18,9 @@ module Api::V1
       @post = Post.new(post_params)
 
       if @post.save
-        render json: @post, status: :created, location: @post
+        # render json: @post, status: :created
+        render 'api/v1/posts/create', formats: :json
+        # render json: @post
       else
         render json: @post.errors, status: :unprocessable_entity
       end

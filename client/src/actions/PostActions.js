@@ -25,13 +25,13 @@ export const initialPosts = () => {
   }
 }
 
-export const addPost = (list) => {
+export const addPost = (post) => {
     return(dispatch) => {
     axios({
       method: 'post',
       url: `${API_ROOT}/posts`,
       data: {
-        list
+        post
       }
     }).then(response => {
         dispatch({ type: POST_ADD, payload: response.data })
