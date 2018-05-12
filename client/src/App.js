@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { initialPosts, removePost } from './actions/PostActions';
 
 import './App.css';
-import NavbarContainer from './components/NavbarContainer'
-import Post from './components/Post';
+import { NavbarContainer } from './containers'
+import { Post } from './components';
 import NewPostForm from './components/NewPostForm'
 
 class App extends Component {
@@ -25,21 +25,20 @@ class App extends Component {
       <div style={{ backgroundColor: '#e9ebee' }}>
         <NavbarContainer />
 
-
-          <Row className="show-grid">
-            <Col xs={12} md={1} mdOffset={1} style={{ backgroundColor: 'pink' }}>
-              Hello World
-            </Col>
-            <Col xs={12} md={8}>
-              <NewPostForm />
-              {posts.map(post => {
-                return (<Post post={post} key={post.id} onRemoveList={this.removePost.bind(this)} />)
-              })}
-            </Col>
-            <Col xs={12} md={1} style={{ backgroundColor: '#7caeff' }}>
-              Hello World
-            </Col>
-          </Row>
+        <Row className="show-grid">
+          <Col xs={12} md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
+            Hello World
+          </Col>
+          <Col xs={12} md={6}>
+            <NewPostForm />
+            {posts.map(post => {
+              return (<Post post={post} key={post.id} onRemoveList={this.removePost.bind(this)} />)
+            })}
+          </Col>
+          <Col xs={12} md={2} style={{ backgroundColor: '#7caeff' }}>
+            Hello World
+          </Col>
+        </Row>
 
       </div>
     );

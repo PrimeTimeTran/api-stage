@@ -11,15 +11,13 @@ import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, Glyphicon 
 
     this.handleChange = this.handleChange.bind(this);
 
-    this.state = {
-      body: ''
-    };
+    this.state = { body: '' };
   }
 
   getValidationState() {
     const length = this.state.body.length;
-    if (length > 10) return 'success';
-    else if (length > 5) return 'warning';
+    if (length > 4) return 'success';
+    else if (length > 2) return 'warning';
     else if (length > 0) return 'error';
     return null;
   }
@@ -45,7 +43,6 @@ import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, Glyphicon 
           controlId="formBasicText"
           validationState={this.getValidationState()}
         >
-          <ControlLabel>Working example with validation</ControlLabel>
           <InputGroup>
             <InputGroup.Addon><Glyphicon glyph="pencil" /></InputGroup.Addon>
               <FormControl
@@ -56,7 +53,6 @@ import { FormGroup, ControlLabel, FormControl, HelpBlock, InputGroup, Glyphicon 
               />
           </InputGroup>
           <FormControl.Feedback />
-          <HelpBlock>Validation is based on string length.</HelpBlock>
         </FormGroup>
       </form>
     );
