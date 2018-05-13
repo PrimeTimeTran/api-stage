@@ -1,4 +1,4 @@
-puts "\n\n\n\n\n Pry is loading!\n\n\n\n\n"
+puts "\n\n Pry is loading!\n\n"
 
 begin
   require 'awesome_print'

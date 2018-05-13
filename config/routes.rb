@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :posts
       resources :stages
+      resources :sessions
       get 'home/index'
       root to: "home#index"
     end

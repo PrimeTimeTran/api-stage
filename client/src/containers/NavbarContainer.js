@@ -6,7 +6,7 @@ import {
   NavItem
 } from "react-bootstrap";
 
-import { SignInForm } from '../components'
+import SignInForm from '../components/SignInForm'
 
 
 class NavbarContainer extends Component {
