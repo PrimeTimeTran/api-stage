@@ -12,7 +12,7 @@ require 'rspec/rails'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 Dir[Rails.root.join('app/auth/*.rb')].each { |f| require f }
 
-require_relative '../app/lib/exception_handler.rb'
+require_relative '../app/controllers/concerns/exception_handler.rb'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

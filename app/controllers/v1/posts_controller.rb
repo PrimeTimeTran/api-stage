@@ -49,3 +49,9 @@ module V1
       end
   end
 end
+
+# Signup
+# http :3000/v1/signup email=loi@email.com password=asdfas password_confirmation=asdfas
+
+# Fetch posts
+# http :3000/v1/posts Accept:"application/vnd.posts.v1+json" Authorization:"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjo0LCJleHAiOjE1MjYzODQ0MDB9.i55-fuCNRYw3LHiLhm4qYHzAF7Q-6ulXQCDFopASxReGuMlGL5qi27-0opomfkfK_GUV5u7IiI_8ztsWC4leeQ"
