@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   # has_secure_password
 
-  validates :email, presence: true
+  # validates :email, uniqueness: {case_sensitive: false}
+  validates_uniqueness_of :email
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -9,6 +10,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
+  has_many :messages
 
   has_many :user_conversations, dependent: :destroy
   has_many :conversations, through: :user_conversations
