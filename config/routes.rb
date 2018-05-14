@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
+  namespace :v1, defaults: { format: :json }, constraints: ApiVersion.new('v1', true) do
       # Authentication
       post 'signup', to: 'users#create'
       post 'auth/login', to: 'authentication#authenticate'
@@ -13,7 +12,6 @@ Rails.application.routes.draw do
       # Utilities
       get 'home/index'
       root to: "home#index"
-    end
   end
 
   devise_for :users

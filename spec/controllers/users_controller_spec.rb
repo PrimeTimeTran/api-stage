@@ -5,6 +5,6 @@ require 'rails_helper'
 # end
 
 
-RSpec.describe Api::V1::UsersController, type: :controller do
+RSpec.describe V1::UsersController, type: :controller do
 
 end

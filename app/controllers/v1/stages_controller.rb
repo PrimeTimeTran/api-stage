@@ -1,4 +1,4 @@
-module Api::V1
+module V1
   class StagesController < ApplicationController
     def index
       @stages = Stage.all.order("created_at DESC")

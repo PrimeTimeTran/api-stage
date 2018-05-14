@@ -1,4 +1,4 @@
-module Api::V1
+module V1
   class SessionsController < ApplicationController
     def create
       if @current_user = User.find_by(email: session_params[:email])

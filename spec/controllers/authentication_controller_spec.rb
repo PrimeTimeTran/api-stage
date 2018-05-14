@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::AuthenticationController, type: :controller do
+RSpec.describe V1::AuthenticationController, type: :controller do
 
 end
