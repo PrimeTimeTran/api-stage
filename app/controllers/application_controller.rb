@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
+  include Response
+  include ExceptionHandler
+
   prepend_view_path 'app/views/api/v1/'
   helper_method :current_user
 
