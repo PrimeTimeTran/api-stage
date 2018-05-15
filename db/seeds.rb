@@ -1,3 +1,13 @@
+unless User.find_by email: 'loi@gmail.com'
+  User.create!(email: 'loi@gmail.com',
+               password: 'asdfas',
+               password_confirmation: 'asdfas',
+               first_name: 'Loi',
+               last_name: 'Tran')
+end
+
+
+
 Stage.create name: 'Vinhomes Landmark 3'
 
 25.times do
