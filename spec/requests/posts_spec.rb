@@ -32,7 +32,7 @@ RSpec.describe Post, type: :request do
 
     it 'returns a new post' do
       expect(json).not_to be_empty
-      expect(json).to include('body')
+      expect(json.keys).to include('body')
     end
 
     it 'returns status code 200' do
