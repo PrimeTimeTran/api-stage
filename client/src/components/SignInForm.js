@@ -53,7 +53,7 @@ class SignInForm extends Component {
     // const { isAuthenticated } = this.props.auth;
 
     return (
-      <form onSubmit={e => this.onSubmit(e)} componentClass="fieldset" className={"navbar-form navbar-right"} inline>
+      <form onSubmit={e => this.onSubmit(e)} componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
         <FormGroup>
           <Col>
             <FormControl

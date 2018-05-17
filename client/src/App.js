@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { initialPosts, removePost } from './actions/PostActions';
+import { initialPosts, removePost, signInAction } from './actions';
 
 import './App.css';
 import { NavbarContainer, PostsContainer } from './containers'
@@ -17,6 +17,13 @@ class App extends Component {
   removePost(postId) {
     this.props.removePost(postId);
   }
+  componentWillMount() {
+    signInAction({ email: 'datloiboi@gmail.com', password: 'asdfas' } )()
+  }
+
+  // onSignIn() {
+  //   signInAction({ email: 'datloiboi@gmail.com', password: 'asdfas' } )
+  // }
 
   render() {
     const { posts } = this.props
@@ -44,7 +51,7 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    removePost, initialPosts }, dispatch)
+    removePost, initialPosts, signInAction }, dispatch)
 }
 
 const mapReduxStateToProps = ({ posts }) => {

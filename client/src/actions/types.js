@@ -1,3 +1,10 @@
+// Auth
+export const AUTHENTICATED = 'authenticated_user';
+export const AUTHENTICATION_ERROR = 'authentication_error';
+export const UNAUTHENTICATED = 'unauthenticated_user';
+
+// Post
 export const POST_INITIAL = 'post_initial'
 export const POST_REMOVE = 'post_remove';
-export const POST_ADD = 'post_add'
+export const POST_ADD = 'post_add';
+
