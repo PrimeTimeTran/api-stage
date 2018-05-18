@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {
   Button,
   Col,
@@ -6,8 +7,7 @@ import {
   FormControl,
   FormGroup,
 } from "react-bootstrap";
-import { connect } from 'react-redux';
-import axios from 'axios';
+
 
 class SignInForm extends Component {
   constructor(props) {
@@ -50,9 +50,12 @@ class SignInForm extends Component {
   }
 
   render() {
-    // const { isAuthenticated } = this.props.auth;
-
-    return (
+    if (this.props.isSignedIn) {
+      return (
+        <Button bsStyle="primary" className={"navbar-form navbar-right"} inline="true">Sign Out </Button>
+      )
+    }
+    return ( 
       <form onSubmit={e => this.onSubmit(e)} componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
         <FormGroup>
           <Col>
@@ -87,14 +90,4 @@ class SignInForm extends Component {
   }
 };
 
-// SignInForm.propTypes = {
-//   auth: React.propTypes.object.isRequired
-// }
-
-function mapStateToProps({ auth }) {
-  return {
-    auth
-  }
-}
-
-export default connect(mapStateToProps)(SignInForm);
+export default SignInForm;

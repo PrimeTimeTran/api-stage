@@ -1,6 +1,7 @@
 // Auth
 export const AUTHENTICATED = 'authenticated_user';
 export const AUTHENTICATION_ERROR = 'authentication_error';
+export const AUTHENTICATION_REMOVE = 'authentication_remove';
 export const UNAUTHENTICATED = 'unauthenticated_user';
 
 // Post

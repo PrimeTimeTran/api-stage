@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Glyphicon,
   Navbar,
@@ -31,7 +32,7 @@ class NavbarContainer extends Component {
               Profile
             </NavItem>
           </Nav>
-          <SignInForm />
+          <SignInForm isSignedIn={this.props.authenticated}/>
         </Navbar.Collapse>
 
       </Navbar>
@@ -39,4 +40,8 @@ class NavbarContainer extends Component {
   }
 };
 
-export { NavbarContainer };
+const mapReduxStateToProps = ({ authenticated }) => {
+  return { authenticated };
+};
+
+export default connect(mapReduxStateToProps, null)(NavbarContainer);

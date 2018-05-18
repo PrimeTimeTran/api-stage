@@ -4,7 +4,6 @@ import { Post } from '../components';
 
 class PostsContainer extends Component {
   render() {
-    console.log('This: ', this)
     const { posts } = this.props;
     return (
       <div>

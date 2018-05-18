@@ -6,24 +6,23 @@ import { connect } from 'react-redux';
 import { initialPosts, removePost, signInAction } from './actions';
 
 import './App.css';
-import { NavbarContainer, PostsContainer } from './containers'
-import NewPostForm from './components/NewPostForm'
+import { PostsContainer } from './containers';
+import NavbarContainer from './containers/NavbarContainer';
+import NewPostForm from './components/NewPostForm';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.props.initialPosts();
+    this.props.signInAction({ email: 'datloiboi@gmail.com', password: 'asdfas' })
   }
+
   removePost(postId) {
     this.props.removePost(postId);
   }
-  componentWillMount() {
-    signInAction({ email: 'datloiboi@gmail.com', password: 'asdfas' } )()
+  componentDidMount() {
+    console.log('props', this.props)
   }
-
-  // onSignIn() {
-  //   signInAction({ email: 'datloiboi@gmail.com', password: 'asdfas' } )
-  // }
 
   render() {
     const { posts } = this.props
@@ -54,8 +53,8 @@ function mapDispatchToProps(dispatch) {
     removePost, initialPosts, signInAction }, dispatch)
 }
 
-const mapReduxStateToProps = ({ posts }) => {
-  return { posts };
+const mapReduxStateToProps = ({ posts, authenticated }) => {
+  return { posts, authenticated };
 };
 
 export default connect(mapReduxStateToProps, mapDispatchToProps)(App);
