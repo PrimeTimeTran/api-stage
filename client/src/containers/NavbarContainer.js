@@ -9,7 +9,6 @@ import {
 
 import SignInForm from '../components/SignInForm'
 
-
 class NavbarContainer extends Component {
   render() {
     return (
