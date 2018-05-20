@@ -3,14 +3,14 @@ import { Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { initialPosts, removePost, signInAction } from './actions';
+import { initialPosts, removePost, signInAction } from '../actions';
 
-import { PostsContainer } from './containers';
-import NavbarContainer from './containers/NavbarContainer';
-import NewPostForm from './components/NewPostForm';
-import SignUpForm from './components/SignUpForm';
+import { PostsContainer } from '../containers';
+import NavbarContainer from '../containers/NavbarContainer';
+import NewPostForm from '../components/NewPostForm';
+import SignUpForm from '../components/SignUpForm';
 
-class App extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props)
     this.props.initialPosts();
@@ -20,17 +20,14 @@ class App extends Component {
   removePost(postId) {
     this.props.removePost(postId);
   }
-  componentDidMount() {
-    console.log('props', this.props)
-  }
 
   render() {
     const { authenticated, posts } = this.props
+
     if (!authenticated) {
       return (
         <div style={{ backgroundColor: '#e9ebee' }}>
           <NavbarContainer />
-
           <Row className="show-grid">
             <Col xsHidden md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
               Sidebar
@@ -40,14 +37,13 @@ class App extends Component {
               <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
             </Col>
             <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
-              Ads
+              Addbar
             </Col>
           </Row>
-
         </div>
       )
     } else {
-      return <SignUpForm>Please Sign In</SignUpForm>
+      return <SignUpForm />
     }
   }
 }
@@ -61,4 +57,4 @@ const mapReduxStateToProps = ({ posts, authenticated }) => {
   return { posts, authenticated };
 };
 
-export default connect(mapReduxStateToProps, mapDispatchToProps)(App);
+export default connect(mapReduxStateToProps, mapDispatchToProps)(HomePage);

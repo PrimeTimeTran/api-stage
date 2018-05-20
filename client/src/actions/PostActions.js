@@ -1,4 +1,4 @@
-import { API_ROOT } from '../constants/API-CONFIG.js';
+import { API_ROOT } from '../constants/ApiConfig';
 
 import {
   POST_INITIAL,
@@ -6,7 +6,7 @@ import {
   POST_ADD
 } from './types';
 
-import { client } from './client';
+import client from './client';
 const request = client();
 
 export const addPost = (post) => {

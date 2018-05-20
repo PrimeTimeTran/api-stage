@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const localToken = localStorage.getItem('user_token')
 
-export const client = (token = localToken) => {
+const client = (token = localToken) => {
   const defaultOptions = {
     headers: {
         Authorization: token ? `Token ${token}` : '',
@@ -16,3 +16,5 @@ export const client = (token = localToken) => {
     delete: (url, options = {}) => axios.delete(url, { ...defaultOptions, ...options }),
   };
 };
+
+export default client;

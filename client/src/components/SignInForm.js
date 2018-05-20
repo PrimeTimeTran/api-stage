@@ -50,12 +50,10 @@ class SignInForm extends Component {
   }
 
   render() {
-    if (this.props.isSignedIn) {
-      return (
-        <Button bsStyle="primary" className={"navbar-form navbar-right"} inline="true">Sign Out </Button>
-      )
+    if (!this.props.isSignedIn) {
+      return <Button bsStyle="primary" className={"navbar-form navbar-right"} inline="true">Sign Out</Button>
     }
-    return ( 
+    return (
       <form onSubmit={e => this.onSubmit(e)} componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
         <FormGroup>
           <Col>

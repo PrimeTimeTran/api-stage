@@ -1,0 +1,16 @@
+.companyLogo {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .companyLogo img {
+    width: 80%; }
+
+.jobDetails {
+  width: 80%; }
+  .jobDetails a {
+    color: #999;
+    text-decoration: none; }
+
+.lineBreaker {
+  border: 1px solid #ecf0f1; }

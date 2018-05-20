@@ -37,7 +37,7 @@ class SignInForm extends Component {
       }
     }).then(response => response)
         .then(data => {
-          if(data.status == 201){
+          if(data.status === 201){
               this.props.history.push("/");
               console.log('Successfully Login');
           }

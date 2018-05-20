@@ -4,7 +4,7 @@ import {
   AUTHENTICATED
 } from './types';
 
-import { API_ROOT } from '../constants/API-CONFIG.js';
+import { API_ROOT } from '../constants/ApiConfig';
 
 export const signInAction = ({ email, password }) => {
   let token = localStorage.getItem('user_token');
