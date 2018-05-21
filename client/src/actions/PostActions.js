@@ -20,7 +20,7 @@ export const addPost = (post) => {
 
 export const initialPosts = () => {
   return (dispatch) => {
-    request.get(`${API_ROOT}posts`)
+    request.get(`${API_ROOT}posts.json`)
       .then(response => {
         dispatch({ type: POST_INITIAL, payload: response.data })
       })

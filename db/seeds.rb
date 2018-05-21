@@ -1,3 +1,5 @@
+require 'faker'
+
 unless User.find_by email: 'loi@gmail.com'
   User.create!(email: 'loi@gmail.com',
                password: 'asdfas',
@@ -5,8 +7,6 @@ unless User.find_by email: 'loi@gmail.com'
                first_name: 'Loi',
                last_name: 'Tran')
 end
-
-
 
 Stage.create name: 'Vinhomes Landmark 3'
 
@@ -18,4 +18,3 @@ Stage.create name: 'Vinhomes Landmark 3'
   post.created_at = Faker::Time.between(DateTime.now - 7, DateTime.now)
   post.save
 end
-

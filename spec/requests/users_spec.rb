@@ -3,14 +3,17 @@ require 'rails_helper'
 RSpec.describe 'Users API', type: :request do
   let(:user) { build(:user) }
   let(:headers) { valid_headers.except('Authorization') }
+  let(:invalid_attributes) do
+    attributes_for(:user, password: 'asdf', password_confirmation: 'asdf')
+  end
   let(:valid_attributes) do
-    attributes_for(:user, password_confirmation: user.password)
+    attributes_for(:user, password: user.password, password_confirmation: user.password)
   end
 
   # User signup test suite
   describe 'POST /signup' do
     context 'when valid request' do
-      before { post "/v1/signup", params: valid_attributes.to_json, headers: headers }
+      before { post "/v1/signup", params: { user: valid_attributes }.to_json, headers: headers }
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
@@ -26,15 +29,15 @@ RSpec.describe 'Users API', type: :request do
     end
 
     context 'when invalid request' do
-      before { post '/v1/signup', params: {}, headers: headers }
+      before { post '/v1/signup', params: { user: invalid_attributes }.to_json, headers: headers }
 
       it 'does not create a new user' do
         expect(response).to have_http_status(422)
       end
 
-      it 'returns failure message' do
+      it 'returns password too short' do
         expect(json['message'])
-          .to match(/Validation failed: Email can't be blank, Password can't be blank/)
+          .to match("Validation failed: Password is too short (minimum is 6 characters)")
       end
     end
   end
