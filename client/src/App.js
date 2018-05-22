@@ -21,7 +21,6 @@ class App extends Component {
     this.props.removePost(postId);
   }
   componentDidMount() {
-    console.log('props', this.props)
   }
 
   render() {

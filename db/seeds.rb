@@ -1,7 +1,5 @@
-require 'faker'
-
-unless User.find_by email: 'loi@gmail.com'
-  User.create!(email: 'loi@gmail.com',
+unless User.find_by email: 'loi@stage.io'
+  User.create!(email: 'loi@stage.io',
                password: 'asdfas',
                password_confirmation: 'asdfas',
                first_name: 'Loi',
