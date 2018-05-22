@@ -4,15 +4,9 @@ module V1
 
     # return auth token once user is authenticated
     def authenticate
-      puts "\n\n\n\n\n\n\n\n"
-      puts "AuthenticationController:"
-      puts auth_params
-      puts params[:email]
-      puts params[:password]
-      puts "\n\n\n\n\n\n\n\n"
-      auth_token =
+      response =
         AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
-      json_response(auth_token: auth_token)
+      json_response(auth_token: response.to_json)
     end
 
     private

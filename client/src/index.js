@@ -14,7 +14,11 @@ const persistedState = loadState();
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 
-const store = createStoreWithMiddleware(reducers, persistedState)
+const store = createStoreWithMiddleware(
+  reducers,
+  persistedState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 store.subscribe(throttle(() => {
   saveState(store.getState());

@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { initialPosts, removePost, signInAction } from './actions';
+import { initialPosts, removePost, signIn } from './actions';
 
 import { PostsContainer } from './containers';
 import NavbarContainer from './containers/NavbarContainer';
@@ -14,46 +14,42 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.props.initialPosts();
-    this.props.signInAction({ email: 'datloiboi@gmail.com', password: 'asdfas' })
+    this.props.signIn({
+      email: 'datloiboi@gmail.com',
+      password: 'asdfas' })
   }
 
   removePost(postId) {
     this.props.removePost(postId);
   }
-  componentDidMount() {
-  }
 
   render() {
     const { authenticated, posts } = this.props
-    if (!authenticated) {
-      return (
-        <div style={{ backgroundColor: '#e9ebee' }}>
-          <NavbarContainer />
 
-          <Row className="show-grid">
-            <Col xsHidden md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
-              Sidebar
-            </Col>
-            <Col xs={12} md={6}>
-              <NewPostForm />
-              <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
-            </Col>
-            <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
-              Ads
-            </Col>
-          </Row>
+    return authenticated &&
+    (<div style={{ backgroundColor: '#e9ebee' }}>
+      <NavbarContainer />
+      <Row className="show-grid">
+        <Col xsHidden md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
+          Sidebar
+        </Col>
+        <Col xs={12} md={6}>
+          <NewPostForm />
+          <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
+        </Col>
+        <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
+          Ads
+        </Col>
+      </Row>
+    </div>
+    )
 
-        </div>
-      )
-    } else {
-      return <SignUpForm>Please Sign In</SignUpForm>
-    }
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    removePost, initialPosts, signInAction }, dispatch)
+    removePost, initialPosts, signIn }, dispatch)
 }
 
 const mapReduxStateToProps = ({ posts, authenticated }) => {

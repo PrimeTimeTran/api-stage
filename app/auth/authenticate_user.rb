@@ -6,11 +6,11 @@ class AuthenticateUser
 
   # Service entry point
   def call
-    puts "\n\n\n\n\n\n\n\n"
-    puts "AuthenticateUser.rb"
-    puts user
-    puts "\n\n\n\n\n\n\n\n"
-    JsonWebToken.encode(user_id: user.id) if user
+    token = JsonWebToken.encode(user_id: user.id) if user
+    {
+      token: token,
+      user: user
+    }
   end
 
   private
