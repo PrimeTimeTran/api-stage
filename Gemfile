@@ -30,7 +30,6 @@ gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'faker', '~> 1.6', '>= 1.6.6'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-remote', '~> 0.1.8'
@@ -44,16 +43,16 @@ group :development do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 4.0'
-  gem 'shoulda-matchers', '~> 3.1'
   gem 'database_cleaner'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'simplecov', require: false
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :production do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-remote', '~> 0.1.8'
-  gem 'faker', '~> 1.6', '>= 1.6.6'
 end
 
 
@@ -64,3 +63,4 @@ gem 'devise'
 gem 'fast_jsonapi'
 gem 'jwt'
 gem 'rack-cors', :require => 'rack/cors'
+gem 'faker', '~> 1.6', '>= 1.6.6'

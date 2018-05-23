@@ -6,10 +6,6 @@ class AuthenticateUser
 
   # Service entry point
   def call
-    puts "\n\n\n\n\n\n\n\n"
-    puts "AuthenticateUser"
-    puts "\n\n\n\n\n\n\n\n"
-
     token = JsonWebToken.encode(user_id: user.id) if user
     {
       token: token,

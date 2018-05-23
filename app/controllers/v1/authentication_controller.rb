@@ -4,14 +4,6 @@ module V1
 
     # return auth token once user is authenticated
     def authenticate
-
-      puts "\n\n\n\n\n\n\n\n"
-      puts "Authentication#authenticate"
-      puts "Email:"
-      puts auth_params[:email]
-      puts "\n"
-      puts auth_params[:password]
-      puts "\n\n\n\n\n\n\n\n"
       response =
         AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
       json_response(response.to_json)

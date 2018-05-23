@@ -3,11 +3,8 @@ require 'rails_helper'
 RSpec.describe 'AuthenticationController', type: :request do
   # Authentication test suite
   describe 'POST /auth/login' do
-    # create test user
     let!(:user) { create(:user) }
-    # set headers for authorization
     let(:headers) { valid_headers.except('Authorization') }
-    # set test valid and invalid credentials
     let(:valid_credentials) do
       {
         email: user.email,
@@ -29,7 +26,7 @@ RSpec.describe 'AuthenticationController', type: :request do
       before { post '/v1/auth/login', params: valid_credentials, headers: headers }
 
       it 'returns an authentication token' do
-        expect(json['auth_token']).not_to be_nil
+        expect(json['token']).not_to be_nil
       end
     end
 
