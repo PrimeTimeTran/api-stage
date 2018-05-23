@@ -9,9 +9,9 @@ import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
   constructor(props) {
     super(props)
 
-    this.handleChange = this.handleChange.bind(this);
-
     this.state = { body: '' };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   getValidationState() {

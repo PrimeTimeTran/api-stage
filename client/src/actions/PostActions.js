@@ -10,7 +10,6 @@ import client from './client';
 const request = client();
 
 export const addPost = (post) => {
-  console.log('Adding Posts')
   return(dispatch) => {
     request.post(`${API_ROOT}posts`, { post })
     .then(response => {
