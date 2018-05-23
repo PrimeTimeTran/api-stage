@@ -6,7 +6,7 @@ module V1
     def authenticate
       response =
         AuthenticateUser.new(auth_params[:email], auth_params[:password]).call
-      json_response(auth_token: response.to_json)
+      json_response(response.to_json)
     end
 
     private

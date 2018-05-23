@@ -22,6 +22,7 @@ export const initialPosts = () => {
   return (dispatch) => {
     request.get(`${API_ROOT}posts`)
       .then(response => {
+        console.log('Response: ', response)
         dispatch({ type: POST_INITIAL, payload: response.data })
       }).catch(err => {
         console.log('Error: ', err)

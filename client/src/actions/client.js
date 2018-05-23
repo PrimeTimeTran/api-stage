@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const localToken = localStorage.getItem('user_token')
+const localToken = localStorage.getItem('auth_token')
 
 const client = (token = localToken) => {
   const defaultOptions = {

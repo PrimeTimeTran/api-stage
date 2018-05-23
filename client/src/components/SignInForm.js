@@ -18,8 +18,6 @@ class SignInForm extends Component {
       width: 0,
       height: 0,
     };
-
-    this.onSubmit = this.onSubmit.bind(this)
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -32,18 +30,18 @@ class SignInForm extends Component {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
-  onSubmit(e) {
-    e.preventDefault()
-    axios({
-      method: 'post',
-      url: `http://localhost:3001/api/v1/sessions`,
-      data: {
-        user: { email: 'datloiboi@gmail.com', password: 'asdfas' }
-      }
-    }).then(response => {
-      console.log('Response: ', response)
-    })
-  }
+  // onSubmit(e) {
+  //   e.preventDefault()
+  //   axios({
+  //     method: 'post',
+  //     url: `http://localhost:3001/api/v1/sessions`,
+  //     data: {
+  //       user: { email: 'datloiboi@gmail.com', password: 'asdfas' }
+  //     }
+  //   }).then(response => {
+  //     console.log('Response: ', response)
+  //   })
+  // }
 
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -54,7 +52,7 @@ class SignInForm extends Component {
       return <Button bsStyle="primary" className={"navbar-form navbar-right"} inline="true">Sign Out</Button>
     }
     return (
-      <form onSubmit={e => this.onSubmit(e)} componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
+      <form componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
         <FormGroup>
           <Col>
             <FormControl
