@@ -1,13 +1,15 @@
-unless User.find_by email: 'loi@stage.io'
-  User.create!(email: 'loi@stage.io',
+unless User.find_by email: 'datloiboi@gmail.com'
+  User.create!(email: 'datloiboi@gmail.com',
                password: 'asdfas',
                password_confirmation: 'asdfas',
                first_name: 'Loi',
                last_name: 'Tran')
 end
 
+puts "\nSeeding Stages"
 Stage.create name: 'Vinhomes Landmark 3'
 
+puts "Seeding Posts"
 25.times do
   post = Post.new(
     user_id: 1,

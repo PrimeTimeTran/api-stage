@@ -10,6 +10,7 @@ import client from './client';
 const request = client();
 
 export const addPost = (post) => {
+  console.log('Adding Posts')
   return(dispatch) => {
     request.post(`${API_ROOT}posts`, { post })
     .then(response => {
@@ -19,6 +20,7 @@ export const addPost = (post) => {
 }
 
 export const initialPosts = () => {
+  console.log('Fetching Posts')
   return (dispatch) => {
     request.get(`${API_ROOT}posts`)
       .then(response => {

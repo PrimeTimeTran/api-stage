@@ -14,7 +14,7 @@ export const signIn = ({ email, password }) => {
     if (token) {
       return dispatch({ type: AUTHENTICATED })
     } else {
-      const res = await axios.post(`${API_ROOT}/auth/login.json`, { email, password });
+      const res = await axios.post(`${API_ROOT}auth/login`, { email, password });
       localStorage.setItem('auth_token', res.data.token);
       dispatch({ type: AUTHENTICATE, payload: res.data });
     }

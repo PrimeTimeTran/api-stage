@@ -1,9 +1,6 @@
 import {
   AUTHENTICATE,
-  AUTHENTICATED,
-  AUTHENTICATION_ERROR,
-  AUTHENTICATION_REMOVE,
-  UNAUTHENTICATED
+  AUTHENTICATED
 } from '../actions/types';
 
 let INITIAL_STATE = {
@@ -22,7 +19,7 @@ export default function(state = INITIAL_STATE, action) {
       return state
     case AUTHENTICATE:
       const { user, token } = action.payload
-      return { ...state, user: user, token: action.payload }
+      return { ...state, user: user, token }
     default:
       return state;
   }
