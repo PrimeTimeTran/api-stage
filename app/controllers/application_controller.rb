@@ -8,6 +8,10 @@ class ApplicationController < ActionController::API
   prepend_view_path 'app/views/api/v1/'
   helper_method :current_user
 
+  def fallback_index_html
+    render :file => 'public/index.html'
+  end
+
   private
     def authorize_request
       @current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]

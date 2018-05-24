@@ -3,7 +3,7 @@ export const AUTHENTICATE = 'authenticate'
 export const AUTHENTICATED = 'authenticated_user';
 export const AUTHENTICATION_ERROR = 'authentication_error';
 export const AUTHENTICATION_REMOVE = 'authentication_remove';
-export const UNAUTHENTICATED = 'unauthenticated_user';
+export const UNAUTHENTICATE = 'unauthenticate';
 export const LOGON = 'logon';
 
 // Post

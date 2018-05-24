@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
+
 import {
   Button,
   Col,
@@ -7,7 +7,6 @@ import {
   FormControl,
   FormGroup,
 } from "react-bootstrap";
-
 
 class SignInForm extends Component {
   constructor(props) {
@@ -30,60 +29,71 @@ class SignInForm extends Component {
     window.removeEventListener('resize', this.updateWindowDimensions);
   }
 
-  // onSubmit(e) {
-  //   e.preventDefault()
-  //   axios({
-  //     method: 'post',
-  //     url: `http://localhost:3001/api/v1/sessions`,
-  //     data: {
-  //       user: { email: 'datloiboi@gmail.com', password: 'asdfas' }
-  //     }
-  //   }).then(response => {
-  //     console.log('Response: ', response)
-  //   })
-  // }
-
   updateWindowDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const { email, password } = this.state
+    this.props.signIn({ email, password })
+    this.setState({ email: '', password: '' })
+  }
+
   render() {
-    if (!this.props.isSignedIn) {
-      return <Button bsStyle="primary" className={"navbar-form navbar-right"} inline="true">Sign Out</Button>
+    const { authenticated, signOut } = this.props
+    if (authenticated.token) {
+      return <Button
+        onClick={() => signOut()}
+        bsStyle="primary"
+        className={"navbar-form navbar-right"}
+        inline="true">Sign Out
+      </Button>
+    } else {
+      return (
+        <form componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
+          <FormGroup>
+            <Col>
+              <FormControl
+                type="email"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+            </Col>
+          </FormGroup>
+
+          <FormGroup controlId="formHorizontalPassword">
+            <Col>
+              <FormControl
+                type="password"
+                placeholder="Password"
+                onChange={e => this.setState({ password: e.target.value })}
+              />
+            </Col>
+          </FormGroup>
+
+          <FormGroup>
+            <Col sm={10}>
+              <Button
+                onClick={(e) => this.handleSubmit(e)}
+                type="submit"
+                bsStyle="primary"
+                className={( this.state.width < 450 ? 'pull-right' : '')}
+              >
+                Sign in
+              </Button>
+            </Col>
+          </FormGroup>
+        </form>
+      )
     }
-    return (
-      <form componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
-        <FormGroup>
-          <Col>
-            <FormControl
-              type="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-          </Col>
-        </FormGroup>
 
-        <FormGroup controlId="formHorizontalPassword">
-          <Col>
-            <FormControl
-              type="password"
-              placeholder="Password"
-              onChange={e => this.setState({ password: e.target.value })}
-            />
-          </Col>
-        </FormGroup>
-
-        <FormGroup>
-          <Col sm={10}>
-            <Button type="submit" bsStyle="primary" className={( this.state.width < 450 ? 'pull-right' : '')}>
-              Sign in
-            </Button>
-          </Col>
-        </FormGroup>
-      </form>
-    )
   }
 };
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ signIn, signOut }, dispatch)
+// }
 
 export default SignInForm;

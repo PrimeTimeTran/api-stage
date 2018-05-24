@@ -1,6 +1,7 @@
 import {
   AUTHENTICATE,
-  AUTHENTICATED
+  AUTHENTICATED,
+  UNAUTHENTICATE
 } from '../actions/types';
 
 let INITIAL_STATE = {
@@ -20,6 +21,9 @@ export default function(state = INITIAL_STATE, action) {
     case AUTHENTICATE:
       const { user, token } = action.payload
       return { ...state, user: user, token }
+    case UNAUTHENTICATE:
+      console.log('Unauthenticate');
+      return { ...state, token: null }
     default:
       return state;
   }

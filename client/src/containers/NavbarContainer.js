@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
   Glyphicon,
   Navbar,
@@ -13,7 +12,6 @@ class NavbarContainer extends Component {
   render() {
     return (
       <Navbar collapseOnSelect>
-
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">React & Rails</a>
@@ -25,22 +23,17 @@ class NavbarContainer extends Component {
           <Nav>
             <NavItem eventKey={1} href="#">
               <Glyphicon glyph="star" style={{ marginRight: '5px'}}/>
-                Home
+              Home
             </NavItem>
             <NavItem eventKey={2} href="#">
               Profile
             </NavItem>
           </Nav>
-          <SignInForm isSignedIn={this.props.authenticated}/>
+          <SignInForm {...this.props} />
         </Navbar.Collapse>
-
       </Navbar>
     );
   }
 };
 
-const mapReduxStateToProps = ({ authenticated }) => {
-  return { authenticated };
-};
-
-export default connect(mapReduxStateToProps, null)(NavbarContainer);
+export default NavbarContainer;
