@@ -8,7 +8,7 @@ import {
   FormGroup,
 } from "react-bootstrap";
 
-class SignInForm extends Component {
+class SignUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -94,4 +94,4 @@ class SignInForm extends Component {
   }
 };
 
-export default SignInForm;
+export default SignUpForm;

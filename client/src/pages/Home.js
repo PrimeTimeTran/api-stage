@@ -8,16 +8,14 @@ import { initialPosts, removePost, signIn, signOut } from '../actions';
 import { PostsContainer } from '../containers';
 import NavbarContainer from '../containers/NavbarContainer';
 import NewPostForm from '../components/NewPostForm';
-import SignUpForm from '../components/SignUpForm';
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-    // this.props.signIn({ email: 'datloiboi@gmail.com', password: 'asdfas' })
-  }
-
   componentDidMount() {
     this.props.initialPosts();
+  }
+
+  componentWillUpdate() {
+    console.log('Home Component Updating')
   }
 
   removePost(postId) {
@@ -27,8 +25,7 @@ class Home extends Component {
   render() {
     const { authenticated, posts, signIn, signOut } = this.props
 
-    return ( authenticated
-    ? (
+    return (
       <div style={{ backgroundColor: '#e9ebee' }}>
         <NavbarContainer
           signIn={signIn}
@@ -40,8 +37,14 @@ class Home extends Component {
             Sidebar
           </Col>
           <Col xs={12} md={6}>
-            <NewPostForm />
-            <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
+            {
+              authenticated.token && (
+                <div>
+                  <NewPostForm />
+                  <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
+                </div>
+              )
+            }
           </Col>
           <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
             Ads
@@ -49,7 +52,6 @@ class Home extends Component {
         </Row>
       </div>
       )
-    : <SignUpForm>Please Sign Up</SignUpForm>)
   }
 }
 

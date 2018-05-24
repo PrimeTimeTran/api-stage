@@ -9,7 +9,6 @@ import {
 import { API_ROOT } from '../constants/ApiConfig';
 
 export const signIn = ({ email, password }) => {
-  console.log('Email', email)
   let token = localStorage.getItem('auth_token');
 
   return async (dispatch) => {
@@ -24,8 +23,7 @@ export const signIn = ({ email, password }) => {
 }
 
 export const signOut = () => {
-  let token = localStorage.removeItem('auth_token');
-
+  localStorage.removeItem('auth_token');
   return (dispatch) => {
     dispatch({ type: UNAUTHENTICATE })
   }
