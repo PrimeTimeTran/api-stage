@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addPost } from '../actions/PostActions';
-import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
+import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
 
  class NewPostForm extends Component {
   constructor(props) {
@@ -36,6 +36,7 @@ import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
     }
   }
 
+
   render() {
     return (
       <form onClick={this.props._handleClick} onSubmit={(e) => this.handleSubmit(e)}>
@@ -54,10 +55,26 @@ import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
           </InputGroup>
           <FormControl.Feedback />
         </FormGroup>
+        <FieldGroup
+          id="formControlsFile"
+          type="file"
+          label="File"
+          help="Example block-level help text here."
+        />
       </form>
     );
   }
 };
+
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+    </FormGroup>
+  );
+}
+
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ addPost }, dispatch)
