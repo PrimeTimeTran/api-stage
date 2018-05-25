@@ -5,9 +5,7 @@ class ApplicationController < ActionController::API
   attr_reader :current_user
 
   prepend_view_path 'app/views/api/v1/'
-  before_action :authorize_request, except: [:fallback_index_html]
-
-  helper_method :current_user
+  before_action :authorize_request, :set_session, except: [:fallback_index_html]
 
   def fallback_index_html
     render :file => 'public/index.html'
@@ -18,14 +16,8 @@ class ApplicationController < ActionController::API
       @current_user = (AuthorizeApiRequest.new(request.headers).call)[:user]
     end
 
-    def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) unless @current_user
-      if @current_user
-        @current_user ||= User.find(session[:user_id])
-        @current_user.save(validate: false)
-        cookies[:user_id] = @current_user.id || 'guest'
-        @current_user
-      end
+    def set_session
+      session[:user_id] = current_user.id
     end
 
     def login(user)
