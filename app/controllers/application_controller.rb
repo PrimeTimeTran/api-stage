@@ -2,10 +2,11 @@ class ApplicationController < ActionController::API
   include Response
   include ExceptionHandler
 
-  before_action :authorize_request
   attr_reader :current_user
 
   prepend_view_path 'app/views/api/v1/'
+  before_action :authorize_request
+
   helper_method :current_user
 
   def fallback_index_html

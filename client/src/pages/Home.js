@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom'
 
 import { initialPosts, removePost, signIn, signOut } from '../actions';
 
@@ -34,7 +35,7 @@ class Home extends Component {
         />
         <Row className="show-grid">
           <Col xsHidden md={2} mdOffset={1} style={{ backgroundColor: 'pink' }}>
-            Sidebar
+            <Link to="/about">About</Link>
           </Col>
           <Col xs={12} md={6}>
             {
