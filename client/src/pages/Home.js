@@ -103,17 +103,19 @@ validateForm() {
           signOut={signOut}
           authenticated={authenticated}
         />
-        <div className="main-content">
+        <div className="main-content" style={{ paddingTop: '5em' }}>
           <div className="container">
             {
               (authenticated.token) ?
                 <Row>
-                  <Col xsHidden md={2} mdOffset={1}>
+                  <Col xsHidden md={2}>
                     <NavigationPanel />
                   </Col>
-                  <Col xs={12} md={6}>
-                    <NewPostForm />
-                    <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}/>
+                  <Col xs={12} md={8}>
+
+                    <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}>
+                      <NewPostForm />
+                    </PostsContainer>
                   </Col>
                   <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
                     Ads

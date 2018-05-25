@@ -13,7 +13,7 @@ class NavbarContainer extends Component {
   }
   render() {
     return (
-      <Navbar collapseOnSelect>
+      <Navbar collapseOnSelect fixedTop>
         <div className='container'>
           <Navbar.Header>
             <Navbar.Brand>
