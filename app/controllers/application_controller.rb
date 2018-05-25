@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   attr_reader :current_user
 
   prepend_view_path 'app/views/api/v1/'
-  before_action :authorize_request
+  before_action :authorize_request, except: [:fallback_index_html]
 
   helper_method :current_user
 

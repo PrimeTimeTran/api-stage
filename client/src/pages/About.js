@@ -3,7 +3,6 @@ import { Container, Button } from 'semantic-ui-react'
 
 class About extends Component {
   componentWillMount() {
-    console.log('Loading About')
   }
   render () {
     return <Container text textAlign='center'>

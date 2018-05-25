@@ -16,7 +16,6 @@ class Home extends Component {
   }
 
   componentWillUpdate() {
-    console.log('Home Component Updating')
   }
 
   removePost(postId) {
