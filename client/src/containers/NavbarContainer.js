@@ -9,6 +9,9 @@ import {
 import SignInForm from '../components/SignInForm'
 
 class NavbarContainer extends Component {
+  componentWillMount() {
+    console.log('This props', this.props)
+  }
   render() {
     return (
       <Navbar collapseOnSelect>
