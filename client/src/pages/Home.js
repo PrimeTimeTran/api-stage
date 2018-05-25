@@ -74,11 +74,11 @@ class Home extends Component {
   switch(fieldName) {
     case 'email':
       emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-      fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+      fieldValidationErrors.email = emailValid ? '' : `${this.state.email} isn't a valid email.`;
       break;
     case 'password':
       passwordValid = value.length >= 6;
-      fieldValidationErrors.password = passwordValid ? '': ' is too short';
+      fieldValidationErrors.password = passwordValid ? '': 'Invalid password.';
       break;
     default:
       break;
@@ -103,11 +103,11 @@ validateForm() {
           signOut={signOut}
           authenticated={authenticated}
         />
-
-          {
-            authenticated.token && (
-              <div>
-                <Row className="show-grid">
+        <div className="main-content">
+          <div className="container">
+            {
+              (authenticated.token) ?
+                <Row>
                   <Col xsHidden md={2} mdOffset={1}>
                     <NavigationPanel />
                   </Col>
@@ -119,61 +119,61 @@ validateForm() {
                     Ads
                   </Col>
                 </Row>
-              </div>
-            )
-          }
-          {
-            !authenticated.token && (
-              <Row className="show-grid">
-                <Col xs={12} md={8}>
-                </Col>
-                <Col xs={6} md={3}>
-                  <Panel>
-                    <Panel.Heading>
-                      <Panel.Title componentClass="h3">Panel heading</Panel.Title>
-                    </Panel.Heading>
-                    <Panel.Body>
-                      <form className='clearfix'>
-                        <FormGroup
-                          controlId="formBasicText"
+              : <Row>
+                  <Col xs={12} md={8}>
+                  </Col>
+                  <Col xs={6} md={4}>
+                    <Panel>
+                      <Panel.Heading>
+                        <Panel.Title componentClass="h3">Welcome!</Panel.Title>
+                      </Panel.Heading>
+                      <Panel.Body>
+                        <form className='clearfix'>
+                          <FormGroup
+                            controlId="formBasicText"
 
-                          className={`form-group ${this.errorClass(this.state.formErrors.email)}`}
-                        >
-                          <ControlLabel>Email:</ControlLabel>
-                          <FormControl
-                            type="text"
-                            name="email"
-                            value={this.state.email}
-                            placeholder="john@gmail.com"
-                            onChange={(event) => this.handleUserInput(event)}
-                          />
-                          <FormControl.Feedback />
-                          <HelpBlock>Validation is based on string length.</HelpBlock>
-                        </FormGroup>
-                        <FormGroup
-                          controlId="formBasicText"
-
-                          className={`form-group ${this.errorClass(this.state.formErrors.password)}`}
-                        >
-                          <ControlLabel>Password:</ControlLabel>
+                            className={`form-group ${this.errorClass(this.state.formErrors.email)}`}
+                          >
+                            <ControlLabel>Email:</ControlLabel>
                             <FormControl
-                              type="password"
-                              name="password"
-                              value={this.state.password}
-                              placeholder="********"
+                              type="text"
+                              name="email"
+                              value={this.state.email}
+                              placeholder="john@gmail.com"
                               onChange={(event) => this.handleUserInput(event)}
                             />
                             <FormControl.Feedback />
-                            <HelpBlock>Validation is based on string length.</HelpBlock>
-                            <Button disabled={!this.state.formValid} type="submit" className='pull-right'>Sign Up</Button>
-                        </FormGroup>
-                      </form>
-                    </Panel.Body>
-                  </Panel>
-                </Col>
-              </Row>
-            )
-          }
+                            <HelpBlock>
+                              { this.state.formErrors.email }
+                            </HelpBlock>
+                          </FormGroup>
+                          <FormGroup
+                            controlId="formBasicText"
+
+                            className={`form-group ${this.errorClass(this.state.formErrors.password)}`}
+                          >
+                            <ControlLabel>Password:</ControlLabel>
+                              <FormControl
+                                type="password"
+                                name="password"
+                                value={this.state.password}
+                                placeholder="********"
+                                onChange={(event) => this.handleUserInput(event)}
+                              />
+                              <FormControl.Feedback />
+                              <HelpBlock>
+                                { this.state.formErrors.password }
+                              </HelpBlock>
+                              <Button disabled={!this.state.formValid} type="submit" className='pull-right'>Sign Up</Button>
+                          </FormGroup>
+                        </form>
+                      </Panel.Body>
+                    </Panel>
+                  </Col>
+                </Row>
+            }
+          </div>
+        </div>
       </div>
       )
   }

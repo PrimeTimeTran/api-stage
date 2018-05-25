@@ -8,8 +8,7 @@ import NotFound from './pages/NotFound'
 class App extends Component {
   render () {
 
-    return <div style={{ backgroundColor: '#e9ebee', height: '100vh' }}>
-      <Router>
+    return <Router>
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/about' exact component={About} />
@@ -17,7 +16,6 @@ class App extends Component {
           <Route component={NotFound} />
         </Switch>
       </Router>
-    </div>
   }
 }
 
