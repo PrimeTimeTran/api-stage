@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom'
 import { Button, Glyphicon, Panel, ButtonGroup, DropdownButton, MenuItem } from 'react-bootstrap'
 
 const Post = ({ post, onRemovePost }) => {
@@ -12,13 +13,16 @@ const Post = ({ post, onRemovePost }) => {
             {post.created_at}
           </Moment>
 
+
           <DropdownButton
             pullRight
+            noCaret
             eventKey={3}
             title={
-              <span><i className="glyphicon glyphicon-option-horizontal"></i></span>
+              <span className='Gogogo'><i className="glyphicon glyphicon-option-horizontal"></i></span>
             }
-            style={{ background: '#008cba', border: 'none' }}
+            // style="box-shadow: none; background: none; border: none"
+            style={styles.menuStyle}
           >
             <MenuItem eventKey='1'>
               <i className="glyphicon glyphicon-pencil"></i> Edit
@@ -27,6 +31,8 @@ const Post = ({ post, onRemovePost }) => {
               <i className="glyphicon glyphicon-trash"></i> Delete
             </MenuItem>
           </DropdownButton>
+
+
 
         </Panel.Title>
       </Panel.Heading>
@@ -43,6 +49,14 @@ const styles = {
   },
   alignLeft: {
     textAlign: 'left'
+  },
+  menuStyle: {
+    boxShadow: 'none',
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    color: 'white',
+    marginLeft: '2em'
   }
 }
 

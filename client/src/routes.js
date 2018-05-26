@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound';
 
 const history = createBrowserHistory();
 const Routes = () =>
-  <div className="main-content" style={{ paddingTop: '45px' }}>
+  <div className="main">
     <Router history={history}>
       <Switch>
         <Route path='/' exact component={Home} />
