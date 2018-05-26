@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {
+  Button,
   Glyphicon,
+  FormControl,
+  FormGroup,
   Navbar,
   Nav,
   NavItem
@@ -17,23 +20,27 @@ class NavbarContainer extends Component {
         <div className='container'>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">React & Rails</a>
+
+              <a href="/"><Glyphicon glyph="align-left" /></a>
             </Navbar.Brand>
             <Navbar.Toggle />
+            <Navbar.Form pullLeft>
+              <form>
+                <FormGroup controlId="search">
+                  <FormControl
+                    type="text"
+                    placeholder="Search..."
+                    style={{ width: '25em' }}
+                  />
+                </FormGroup>
+              </form>
+            </Navbar.Form>
           </Navbar.Header>
 
           <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="#">
-                <Glyphicon glyph="star" style={{ marginRight: '5px'}}/>
-                Home
-              </NavItem>
-              <NavItem eventKey={2} href="#">
-                Profile
-              </NavItem>
-            </Nav>
             <SignInForm {...this.props} />
           </Navbar.Collapse>
+
         </div>
       </Navbar>
     );

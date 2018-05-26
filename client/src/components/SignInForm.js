@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import {
   Button,
   Col,
-  form,
   FormControl,
   FormGroup,
+  Glyphicon
 } from "react-bootstrap";
 
 class SignInForm extends Component {
@@ -43,15 +43,19 @@ class SignInForm extends Component {
   render() {
     const { authenticated, signOut } = this.props
     if (authenticated.token) {
-      return <Button
-        onClick={() => signOut()}
-        bsStyle="primary"
-        className={"navbar-form navbar-right"}
-        inline="true">Sign Out
-      </Button>
+      return <div className="navbar-form navbar-right">
+        <Glyphicon glyph="home" style={{ marginRight: '10px', color: 'white' }} />
+        <Glyphicon glyph="envelope" style={{ marginRight: '10px', color: 'white' }} />
+        <Glyphicon glyph="globe" style={{ marginRight: '10px', color: 'white' }} />
+        <Button
+          onClick={() => signOut()}
+          bsStyle="primary"
+          inline="true">Sign Out
+        </Button>
+      </div>
     } else {
       return (
-        <form componentclass="fieldset" className={"navbar-form navbar-right"} inline="true" >
+        <form inline componentclass="fieldset" className="navbar-form navbar-right">
           <FormGroup>
             <Col>
               <FormControl
