@@ -6,7 +6,7 @@ import {
   POST_ADD
 } from './types';
 
-import client from './client';
+import client from '../utils/client';
 const request = client();
 
 export const addPost = (post) => {

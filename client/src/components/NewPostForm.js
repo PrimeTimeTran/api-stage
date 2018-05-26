@@ -39,7 +39,7 @@ import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'rea
 
   render() {
     return (
-      <form onClick={this.props._handleClick} onSubmit={(e) => this.handleSubmit(e)}>
+      <form onClick={this.props._handleClick} onSubmit={(e) => this.handleSubmit(e)} style={{ marginTop: '1em' }}>
         <FormGroup
           controlId="formBasicText"
           validationState={this.getValidationState()}

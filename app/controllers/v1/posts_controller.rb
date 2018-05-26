@@ -14,6 +14,8 @@ module V1
 
     # POST /posts
     def create
+      binding.pry
+
       @post = Post.new(post_params)
 
       if @post.save
@@ -45,7 +47,7 @@ module V1
 
       # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:body, :user_id)
+        params.require(:post).permit(:body, :user_id, :header_image, uploads: [])
       end
   end
 end

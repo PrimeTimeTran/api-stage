@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Glyphicon,
   ListGroup,
@@ -6,21 +7,29 @@ import {
   Panel
 } from 'react-bootstrap';
 
-import { Link } from 'react-router-dom'
+
 
 class NavigationPanel extends Component {
   render () {
     return (
-      <Panel>
+      <Panel style={{ marginTop: '1em' }}>
         <Panel.Heading>Panel heading</Panel.Heading>
         <ListGroup>
+        <ListGroupItem>
+            <Glyphicon glyph="share-alt" style={styles.iconStyles} />
+            <Link to="/about">Friends</Link>
+          </ListGroupItem>
           <ListGroupItem>
             <Glyphicon glyph="envelope" style={styles.iconStyles} />
             <Link to="/messages">Messages</Link>
           </ListGroupItem>
-          <ListGroupItem >
+          <ListGroupItem>
             <Glyphicon glyph="share-alt" style={styles.iconStyles} />
-            <Link to="/about">About</Link>
+            <Link to="/about">Groups</Link>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Glyphicon glyph="share-alt" style={styles.iconStyles} />
+            <Link to="/about">Venues</Link>
           </ListGroupItem>
           <ListGroupItem>&hellip;</ListGroupItem>
         </ListGroup>
@@ -35,4 +44,4 @@ const styles = {
   }
 }
 
-export default NavigationPanel
+export default NavigationPanel;

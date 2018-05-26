@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
   Button,
   Col,
@@ -9,18 +11,14 @@ import {
   HelpBlock,
   Row
 } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-// import { Link } from 'react-router-dom'
 
 import { initialPosts, removePost, signIn, signOut } from '../actions';
 
 import { PostsContainer } from '../containers';
-import NavigationPanel from '../components/Panel'
+import NavigationPanel from '../components/NavigationPanel';
 import NavbarContainer from '../containers/NavbarContainer';
 import NewPostForm from '../components/NewPostForm';
 import '../components/FormErrors';
-// import { Container } from 'semantic-ui-react';
 
 class Home extends Component {
   constructor(props) {
@@ -103,19 +101,20 @@ validateForm() {
           signOut={signOut}
           authenticated={authenticated}
         />
-        <div className="main-content" style={{ paddingTop: '5em' }}>
+        <div className="main-content" style={{ paddingTop: '45px' }}>
           <div className="container">
             {
               (authenticated.token) ?
                 <Row>
                   <Col xsHidden md={2}>
-                    <NavigationPanel />
+                    <NavigationPanel style={{ marginTop: '1em' }}/>
                   </Col>
                   <Col xs={12} md={8}>
-
-                    <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}>
-                      <NewPostForm />
-                    </PostsContainer>
+                    <div className="pre-scrollable" style={{ maxHeight: '94vh' }}>
+                      <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}>
+                        <NewPostForm />
+                      </PostsContainer>
+                    </div>
                   </Col>
                   <Col xsHidden md={2} style={{ backgroundColor: '#7caeff' }}>
                     Ads
