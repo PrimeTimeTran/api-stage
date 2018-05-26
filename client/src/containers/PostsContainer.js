@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 import { Post } from '../components';
 
 class PostsContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { posts: [] };
+  }
+
   render() {
     const { children, posts } = this.props;
     return (

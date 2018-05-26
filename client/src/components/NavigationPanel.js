@@ -24,11 +24,11 @@ class NavigationPanel extends Component {
             <Link to="/messages">Messages</Link>
           </ListGroupItem>
           <ListGroupItem>
-            <Glyphicon glyph="share-alt" style={styles.iconStyles} />
+            <Glyphicon glyph="music" style={styles.iconStyles} />
             <Link to="/about">Groups</Link>
           </ListGroupItem>
           <ListGroupItem>
-            <Glyphicon glyph="share-alt" style={styles.iconStyles} />
+            <Glyphicon glyph="book" style={styles.iconStyles} />
             <Link to="/about">Venues</Link>
           </ListGroupItem>
           <ListGroupItem>&hellip;</ListGroupItem>

@@ -5,7 +5,7 @@ import { Panel, DropdownButton, MenuItem } from 'react-bootstrap'
 const Post = ({ post, onRemovePost }) => {
   return (
     <Panel bsStyle='primary' key={post.id}>
-      <Panel.Heading style={styles.headerStyle} onclick={() => console.log('clicked')}>
+      <Panel.Heading style={styles.headerStyle} onClick={() => console.log('clicked')}>
         <Panel.Title componentClass='h3'>{post.user.first_name + ' ' + post.user.last_name}</Panel.Title>
         <Panel.Title componentClass='h3'>
           <Moment fromNow>
@@ -27,7 +27,8 @@ const Post = ({ post, onRemovePost }) => {
 
 
             <DropdownButton
-
+              id={post.id}
+              title="Edit"
             >
                 <MenuItem className="test" eventKey="1">Edit</MenuItem>
                 <MenuItem divider />

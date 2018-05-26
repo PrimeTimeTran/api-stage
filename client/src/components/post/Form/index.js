@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import axiosClient from '../axiosClient';
-import './Index.css';
+import client from '../../../axiosClient';
 
 class PostForm extends Component {
+  state = {
+    selectedPostCoverFiles: [],
+    submitFormProgress: 0,
+    isSubmittingForm: false,
+    didFormSubmissionComplete: false,
+    post: {
+      id: this.props.match.params.id,
+      title: '',
+      description: '',
+      errors: {}
+    }
+  };
+
   render() {
     return (
       <div className="PostForm">
