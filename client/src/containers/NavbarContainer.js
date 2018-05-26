@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import {
-  Button,
   Glyphicon,
   FormControl,
   FormGroup,
   Navbar,
-  Nav,
-  NavItem
 } from "react-bootstrap";
 
 import SignInForm from '../components/SignInForm'

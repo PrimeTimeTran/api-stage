@@ -14,8 +14,6 @@ module V1
 
     # POST /posts
     def create
-      binding.pry
-
       @post = Post.new(post_params)
 
       if @post.save

@@ -44,9 +44,9 @@ class SignInForm extends Component {
     const { authenticated, signOut } = this.props
     if (authenticated.token) {
       return <div className="navbar-form navbar-right">
-        <Glyphicon glyph="home" style={{ marginRight: '10px', color: 'white' }} />
-        <Glyphicon glyph="envelope" style={{ marginRight: '10px', color: 'white' }} />
-        <Glyphicon glyph="globe" style={{ marginRight: '10px', color: 'white' }} />
+        <Glyphicon glyph="home" style={styles.icon} />
+        <Glyphicon glyph="envelope" style={styles.icon} />
+        <Glyphicon glyph="globe" style={styles.icon} />
         <Button
           onClick={() => signOut()}
           bsStyle="primary"
@@ -55,7 +55,7 @@ class SignInForm extends Component {
       </div>
     } else {
       return (
-        <form inline componentclass="fieldset" className="navbar-form navbar-right">
+        <form className="navbar-form navbar-right">
           <FormGroup>
             <Col>
               <FormControl
@@ -96,8 +96,11 @@ class SignInForm extends Component {
   }
 };
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ signIn, signOut }, dispatch)
-// }
+const styles = {
+  icon: {
+    marginRight: '2em',
+    color: '#fff'
+  }
+}
 
 export default SignInForm;
