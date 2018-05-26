@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Post } from '../components';
+import Post from '../components/post';
 
 class PostsContainer extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class PostsContainer extends Component {
   render() {
     const { children, posts } = this.props;
     return (
-      <div>
+      <div className="container-posts">
         { children }
         {posts.map(post => {
           return (<Post post={post} key={post.id} onRemovePost={this.props.onRemovePost} />)
