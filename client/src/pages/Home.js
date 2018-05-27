@@ -6,7 +6,7 @@ import {
   Row
 } from 'react-bootstrap';
 
-import { initialPosts, removePost, signIn, signOut } from '../actions';
+import { initialPosts, addPost, removePost, signIn, signOut } from '../actions';
 
 import { PostsContainer } from '../containers';
 import NavigationPanel from '../components/NavigationPanel';
@@ -37,7 +37,7 @@ class Home extends Component {
   }
 
   render() {
-    const { authenticated, posts, signIn, signOut } = this.props
+    const { authenticated, addPost, posts, signIn, signOut } = this.props
 
     // return (
     //   <div className="container-home">
@@ -93,7 +93,7 @@ class Home extends Component {
             </Col>
             <Col xs={12} md={7} style={styles.middleSideBar}>
               <PostsContainer posts={posts} onRemovePost={this.removePost.bind(this)}>
-                <NewPostForm />
+                <NewPostForm addPost={addPost} authenticated={authenticated}/>
               </PostsContainer>
             </Col>
             <Col xsHidden md={1} style={styles.rightSideBar}>
@@ -140,7 +140,7 @@ const styles = {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    removePost, initialPosts, signIn, signOut }, dispatch)
+    addPost, removePost, initialPosts, signIn, signOut }, dispatch)
 }
 
 const mapReduxStateToProps = ({ posts, authenticated }) => {

@@ -49,13 +49,6 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
-group :production do
-  gem 'pry'
-  gem 'pry-nav'
-  gem 'pry-remote', '~> 0.1.8'
-end
-
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -64,3 +57,4 @@ gem 'fast_jsonapi'
 gem 'jwt'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'faker', '~> 1.6', '>= 1.6.6'
+gem "aws-sdk-s3", require: false

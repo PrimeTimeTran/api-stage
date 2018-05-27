@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import client from '../utils/client'
-
-
+import axios from 'axios';
 import { addPost } from '../actions/PostActions';
 import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
 
+import client from '../utils/client'
+const request = client();
  class NewPostForm extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
       body: '',
-      media: null
+      upload: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,33 +31,23 @@ import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'rea
     this.setState({ body: e.target.value });
   }
 
-  fileSelectedHandler = event => {
-    console.log('Files: ', event.target.files);
-    this.setState({ media: event.target.files[0] })
+  handleFileSelect = event => {
+    this.setState({ upload: event.target.files[0] }, () => {console.log('After Setting State: ', this.state)})
   }
 
-  handleUploadHandler = () => {
-    const request = client();
-    const fd = new FormData();
-    fd.append('uploads', this.state.media, this.state.media.name)
-    request.post('http://localhost:3001/v1/posts', fd, {
-      onUploadProgress: progressEvent => {
-        console.log('Progress:' + Math.round((progressEvent.loaded / progressEvent.total * 100)) + '%' );
-      }
-    })
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { authenticated } = this.props;
+
+    const data = new FormData();
+    data.append('upload', this.state.upload)
+    data.append('body', this.state.body)
+    data.append('user_id', authenticated.user.id)
+
+    request.post('http://localhost:3001/v1/posts', data)
       .then(res => {
-        console.log('Response: ', res);
-    })
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    const postLength = e.target.querySelector("input").value.length
-
-    if (postLength > 1) {
-      this.props.addPost({ body: this.state.body, user_id: 1 })
-      this.setState({ body: '' });
-    }
+        console.log('Response', res)
+      })
   }
 
   render() {
@@ -83,9 +73,8 @@ import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'rea
           type="file"
           label="File"
           help="Example block-level help text here."
-          onChange={this.fileSelectedHandler}
+          onChange={this.handleFileSelect}
         />
-        <button onClick={this.handleUploadHandler}>Upload</button>
       </form>
     );
   }

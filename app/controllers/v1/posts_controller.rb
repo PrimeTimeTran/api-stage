@@ -38,14 +38,12 @@ module V1
     end
 
     private
-      # Use callbacks to share common setup or constraints between actions.
       def set_post
         @post = Post.find(params[:id])
       end
 
-      # Only allow a trusted parameter "white list" through.
       def post_params
-        params.require(:post).permit(:body, :user_id, :header_image, uploads: [])
+        params.permit(:body, :user_id, :upload)
       end
   end
 end

@@ -35,5 +35,3 @@ export const removePost = (postId) => {
     dispatch({ type: POST_REMOVE, payload: postId })
   }
 }
-
-
