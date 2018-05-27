@@ -1,3 +1,4 @@
-class UserBuilder
+# frozen_string_literal: true
 
+class UserBuilder
 end

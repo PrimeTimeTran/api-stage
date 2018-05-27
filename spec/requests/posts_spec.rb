@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :request do
@@ -6,15 +8,12 @@ RSpec.describe Post, type: :request do
   let(:headers) { valid_headers }
   let(:parameters) do
     {
-      post: {
-        body: 'Go',
-        user_id: user.id
-      }
+      body: 'Go',
+      user_id: user.id
     }.to_json
   end
 
   describe 'GET /posts' do
-    # make HTTP get request before each example
     before { get '/v1/posts', params: {}, headers: headers }
 
     it 'returns posts' do

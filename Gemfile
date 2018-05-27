@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -29,7 +31,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-remote', '~> 0.1.8'
@@ -45,16 +47,16 @@ end
 group :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.0'
-  gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'aws-sdk-s3', require: false
 gem 'devise'
+gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'fast_jsonapi'
 gem 'jwt'
-gem 'rack-cors', :require => 'rack/cors'
-gem 'faker', '~> 1.6', '>= 1.6.6'
-gem "aws-sdk-s3", require: false
+gem 'rack-cors', require: 'rack/cors'

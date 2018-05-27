@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Info
   def self.not_found(record = 'record')
     "Sorry, #{record} not found."

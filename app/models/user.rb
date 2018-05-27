@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
 
@@ -14,8 +16,10 @@ class User < ApplicationRecord
   has_many :stages, through: :conversations
   has_many :messages
 
-  has_many :stage_conversations, -> { where("conversations.stage_id IS NOT NULL") }, through: :user_conversations, source: :conversation
-  has_many :private_conversations, -> { where("conversations.stage_id IS NULL") }, through: :user_conversations, source: :conversation
+  has_many :stage_conversations, -> { where('conversations.stage_id IS NOT NULL') }, through: :user_conversations, source: :conversation
+  has_many :private_conversations, -> { where('conversations.stage_id IS NULL') }, through: :user_conversations, source: :conversation
 
   has_many :posts
+  has_many :friendships
+  has_many :friends, through: :friendships, source: :friend
 end

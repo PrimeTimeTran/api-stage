@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module V1
   class PostsController < ApplicationController
-    before_action :set_post, only: [:show, :update, :destroy]
+    before_action :set_post, only: %i[show update destroy]
 
     # GET /posts
     def index
-      @posts = Post.all.order("created_at DESC")
+      @posts = Post.all.order('created_at DESC')
     end
 
     # GET /posts/1
@@ -38,13 +40,14 @@ module V1
     end
 
     private
-      def set_post
-        @post = Post.find(params[:id])
-      end
 
-      def post_params
-        params.permit(:body, :user_id, :upload)
-      end
+    def set_post
+      @post = Post.find(params[:id])
+    end
+
+    def post_params
+      params.permit(:body, :user_id, :upload)
+    end
   end
 end
 

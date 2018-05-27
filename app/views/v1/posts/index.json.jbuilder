@@ -1,4 +1,6 @@
-json.(@posts) do |post|
+# frozen_string_literal: true
+
+json.call(@posts) do |post|
   json.id post.id
   json.owner true if post.user_id == current_user.id
   json.created_at post.created_at

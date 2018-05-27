@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module V1
   class SessionsController < ApplicationController
     def create
@@ -7,13 +9,13 @@ module V1
         else
           head :unauthorized
         end
-      else
       end
     end
 
     private
-      def session_params
-        params.require(:user).permit(:email, :password)
-      end
+
+    def session_params
+      params.require(:user).permit(:email, :password)
+    end
   end
 end

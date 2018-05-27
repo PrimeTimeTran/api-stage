@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'Users API', type: :request do
@@ -13,7 +15,7 @@ RSpec.describe 'Users API', type: :request do
   # User signup test suite
   describe 'POST /signup' do
     context 'when valid request' do
-      before { post "/v1/signup", params: { user: valid_attributes }.to_json, headers: headers }
+      before { post '/v1/signup', params: { user: valid_attributes }.to_json, headers: headers }
 
       it 'creates a new user' do
         expect(response).to have_http_status(201)
@@ -37,7 +39,7 @@ RSpec.describe 'Users API', type: :request do
 
       it 'returns password too short' do
         expect(json['message'])
-          .to match("Validation failed: Password is too short (minimum is 6 characters)")
+          .to match('Validation failed: Password is too short (minimum is 6 characters)')
       end
     end
   end
