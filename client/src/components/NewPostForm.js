@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import axios from 'axios';
 import { addPost } from '../actions/PostActions';
 import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap'
 

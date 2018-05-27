@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many_attached :photos
-  has_one_attached :profile_photo
+  has_many_attached :profile_photos
 
   has_many :user_conversations, dependent: :destroy
   has_many :conversations, through: :user_conversations
