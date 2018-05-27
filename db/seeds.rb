@@ -4,7 +4,7 @@ def spacing(name)
 end
 
 if User.first.nil?
-  spacing('Users')
+  spacing('Founder')
   loi = User.create!(email: 'datloiboi@gmail.com',
     password: 'asdfas',
     password_confirmation: 'asdfas',
@@ -19,7 +19,8 @@ if User.first.nil?
     content_type: 'application/jpg'
   })
 
-  example = {first_name: '', last_name: '', email: '@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
+  # Example
+  # {first_name: '', last_name: '', email: '@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
 
   people = [
     {first_name: 'Charles', last_name: 'Lee', email: 'charles@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
@@ -40,7 +41,6 @@ if User.first.nil?
     {first_name: 'Phuong', last_name: 'Tran', email: 'phuong@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
     {first_name: 'Tai', last_name: 'Tran', email: 'tai@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
     {first_name: 'Thanh', last_name: 'Boo', email: 'thanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    {first_name: 'Yen', last_name: 'Tibor', email: 'yen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
     {first_name: 'Thao', last_name: 'Tran', email: 'thao@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
     {first_name: 'Uyen', last_name: 'Dang', email: 'uyen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
     {first_name: 'Van', last_name: 'Luu', email: 'van@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
@@ -48,6 +48,8 @@ if User.first.nil?
   ]
 
   people.each do |person|
+    spacing("User: #{person[:first_name]}")
+
     name = person[:first_name].downcase
     user = User.create!(person)
     image_path = "#{Dir.pwd}/db/people/#{name}.jpg"
@@ -67,6 +69,9 @@ if User.first.nil?
       conversation = Conversation.create!
       user.user_conversations.create!(conversation: conversation)
       other_user.user_conversations.create!(conversation: conversation)
+      participants = conversation.users.collect(&:first_name).join(" & ")
+      spacing('Conversations')
+      p "Conversation Between: #{participants}"
     end
   end
 end
@@ -85,20 +90,25 @@ if Stage.first.nil?
   ]
 
   stages.each do |stage|
-    s = Stage.create!(name: stage[:name])
+    stage = Stage.create!(name: stage[:name])
+
     (1..3).to_a.each do |idx|
       image_path = "#{Dir.pwd}/db/stages/#{stage[:name]}/cover_photos/#{idx}.jpg"
-      s.cover_photos.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: "application/jpg")
+      stage.cover_photos.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: "application/jpg")
     end
-    s.conversations.create!(name: s.name + ' public')
+
+
+    stage_conversation = stage.conversations.create!(name: stage.name + ' public')
+
     User.all.each do |user|
-      user.user_conversations.create!(stage_id: s.id)
+      spacing('Stage Conversations')
+      user.user_conversations.create!(conversation: stage_conversation)
     end
   end
 end
 
 if Post.first.nil?
-  spacing('Seeding Posts')
+  spacing('Posts')
   25.times do
     post = Post.new(
       user_id: User.all.sample.id,
@@ -108,6 +118,3 @@ if Post.first.nil?
     post.save
   end
 end
-
-
-
