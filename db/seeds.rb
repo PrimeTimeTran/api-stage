@@ -72,8 +72,8 @@ if User.first.nil?
       user.user_conversations.create!(conversation: conversation)
       other_user.user_conversations.create!(conversation: conversation)
 
-      Friendship.create!(user: user, friend_id: other_user.id)
-      Friendship.create!(user: other_user.id, friend_id: user.id)
+      Friendship.create!(user_id: user.id, friend_id: other_user.id, status: 0)
+      Friendship.create!(user_id: other_user.id, friend_id: user.id, status: 0)
 
       participants = conversation.users.collect(&:first_name).join(' & ')
       spacing('Conversations & Friendships')
