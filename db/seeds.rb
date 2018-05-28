@@ -86,9 +86,9 @@ if Stage.first.nil?
   stages = [
     { name: 'Bar2000' },
     { name: '212' },
-    { name: 'EnvyNightClub' },
+    { name: 'EnvyNightclub' },
     { name: 'Glow' },
-    { name: 'Lush' },
+    { name: 'lush' },
     { name: 'ApocalypseNow' },
     { name: 'RepublicClub' },
     { name: 'ChillSkybar' }
