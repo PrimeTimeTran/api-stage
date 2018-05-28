@@ -8,7 +8,13 @@
 
 # Offense count: 1
 # Configuration parameters: Include.
-# Include: **/Gemfile, **/gems.rb
+AllCops:
+  TargetRubyVersion: 2.4.0
+  DisplayCopNames: true
+  Exclude:
+    - 'config/routes.rb'
+    - 'db/**/*.rb'
+
 Bundler/DuplicatedGem:
   Exclude:
     - 'Gemfile'

@@ -57,7 +57,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "api-stage_#{Rails.env}"
 
-  config.action_mailer.default_url_options = { :host => 'https://lit-brushlands-65490.herokuapp.com/' }
+  config.action_mailer.default_url_options = { host: 'https://lit-brushlands-65490.herokuapp.com/' }
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -88,11 +88,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
+    address:         'smtp.sendgrid.net',
+    port:            '587',
+    authentication:  :plain,
+    user_name:       ENV['SENDGRID_USERNAME'],
+    password:        ENV['SENDGRID_PASSWORD'],
+    domain:          'heroku.com'
   }
 end

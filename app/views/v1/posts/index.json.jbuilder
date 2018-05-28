@@ -8,6 +8,7 @@ json.call(@posts) do |post|
   json.image_url post.upload.service_url if post.upload.attached?
   json.user do
     user = post.user.decorate
+
     json.id user.id
     json.full_name user.full_name
     json.profile_photo_url url_for(user.most_recent_profile_photo)
