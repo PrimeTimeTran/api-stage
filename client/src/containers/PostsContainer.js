@@ -12,6 +12,9 @@ class PostsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { posts: [] };
+  }
+
+  componentWillMount() {
     this.props.initialPosts();
   }
 

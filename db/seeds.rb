@@ -84,14 +84,14 @@ end
 if Stage.first.nil?
   spacing('Stages')
   stages = [
-    { name: 'Bar 2000' },
+    { name: 'Bar2000' },
     { name: '212' },
-    { name: 'Envy NightClub' },
+    { name: 'EnvyNightClub' },
     { name: 'Glow' },
     { name: 'Lush' },
-    { name: 'Apocalypse Now' },
-    { name: 'Republic Club' },
-    { name: 'Chill Skybar' }
+    { name: 'ApocalypseNow' },
+    { name: 'RepublicClub' },
+    { name: 'ChillSkybar' }
   ]
 
   stages.each do |stage|
