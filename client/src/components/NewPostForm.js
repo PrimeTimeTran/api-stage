@@ -6,7 +6,7 @@ import { ControlLabel, FormGroup, FormControl, InputGroup, Glyphicon } from 'rea
 
 import client from '../utils/client'
 const request = client();
- class NewPostForm extends Component {
+class NewPostForm extends Component {
   constructor(props) {
     super(props)
 
@@ -47,6 +47,11 @@ const request = client();
       .then(res => {
         console.log('Response', res)
       })
+    this.setState({ body: '' })
+    let randomString = Math.random().toString(36);
+    this.setState({
+      theInputKey: randomString
+    });
   }
 
   render() {
@@ -67,8 +72,10 @@ const request = client();
           </InputGroup>
           <FormControl.Feedback />
         </FormGroup>
+
         <FieldGroup
           id="postMedia"
+          key={this.state.theInputKey || ''}
           type="file"
           label="File"
           help="Example block-level help text here."

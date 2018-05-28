@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   Button,
   ControlLabel,
@@ -9,6 +11,7 @@ import {
 } from 'react-bootstrap';
 
 import { FormErrors } from '../FormErrors';
+import { signUp } from '../../actions'
 
 class SignUpForm extends Component {
   constructor(props) {
@@ -72,6 +75,11 @@ class SignUpForm extends Component {
   validateForm() {
     this.setState({formValid: this.state.emailValid && this.state.passwordValid});
   }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const { email, password } = this.state
+    this.props.signUp({ email, password: password, password_confirmation: password })
+  }
 
   render() {
     return (
@@ -117,7 +125,7 @@ class SignUpForm extends Component {
                   <HelpBlock>
                     { this.state.formErrors.password }
                   </HelpBlock>
-                  <Button disabled={!this.state.formValid} type="submit" className='pull-right'>Sign Up</Button>
+                  <Button onClick={this.handleSubmit} disabled={!this.state.formValid} type="submit" className='pull-right'>Sign Up</Button>
               </FormGroup>
             </form>
           </Panel.Body>
@@ -126,4 +134,8 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ signUp }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(SignUpForm);

@@ -8,7 +8,7 @@ import About from './pages/About';
 import NotFound from './pages/NotFound';
 
 const history = createBrowserHistory();
-const Routes = () =>
+const Routes = ({ authenticated }) =>
   <div className="main">
     <Router history={history}>
       <Switch>

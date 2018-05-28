@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Routes from './routes';
 
 class App extends Component {
   render () {
-    return <Routes />
+    return <Routes authenticated={this.props.authenticated} />
   }
 }
 
-export default App
+const mapReduxStateToProps = ({ authenticated }) => {
+  return { authenticated };
+};
+
+export default connect(mapReduxStateToProps)(App);

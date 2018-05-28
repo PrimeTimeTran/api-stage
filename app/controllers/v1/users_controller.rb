@@ -8,9 +8,8 @@ module V1
     # return authenticated token upon signup
     def create
       user = User.create!(user_params)
-      auth_token = AuthenticateUser.new(user.email, user.password).call
-      response = { message: Info.account_created, auth_token: auth_token }
-      json_response(response, :created)
+      response = AuthenticateUser.new(user.email, user.password).call
+      json_response(response.to_json)
     end
 
     private

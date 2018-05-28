@@ -3,7 +3,6 @@ import Moment from 'react-moment';
 import { Panel, DropdownButton, MenuItem } from 'react-bootstrap'
 
 const Post = ({ post, onRemovePost }) => {
-  console.log('Post is: ', post)
   return (
     <Panel bsStyle='primary' key={post.id}>
       <Panel.Heading style={styles.header} onClick={() => console.log('clicked')}>

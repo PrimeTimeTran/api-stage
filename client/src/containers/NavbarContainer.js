@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import {
   Glyphicon,
   FormControl,
@@ -6,18 +8,18 @@ import {
   Navbar,
 } from "react-bootstrap";
 
+import { signIn, signOut } from '../actions';
+
 import SignInForm from '../components/SignInForm'
 
 class NavbarContainer extends Component {
-  componentWillMount() {
-  }
+
   render() {
     return (
       <Navbar collapseOnSelect fixedTop>
         <div className='container'>
           <Navbar.Header>
             <Navbar.Brand>
-
               <a href="/"><Glyphicon glyph="align-left" /></a>
             </Navbar.Brand>
             <Navbar.Toggle />
@@ -44,4 +46,13 @@ class NavbarContainer extends Component {
   }
 };
 
-export default NavbarContainer;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    signIn, signOut }, dispatch)
+}
+
+const mapReduxStateToProps = ({ authenticated }) => {
+  return { authenticated };
+};
+
+export default connect(mapReduxStateToProps, mapDispatchToProps)(NavbarContainer);

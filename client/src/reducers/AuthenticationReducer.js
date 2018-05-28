@@ -15,15 +15,18 @@ let INITIAL_STATE = {
 }
 
 export default function(state = INITIAL_STATE, action) {
+
   switch(action.type) {
     case AUTHENTICATED:
       return state
+
     case AUTHENTICATE:
       const { user, token } = action.payload
       return { ...state, user: user, token }
+
     case UNAUTHENTICATE:
-      console.log('Unauthenticate');
       return { ...state, token: null }
+
     default:
       return state;
   }
