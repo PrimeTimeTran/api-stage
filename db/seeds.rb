@@ -6,7 +6,7 @@ def spacing(name)
 end
 
 if User.first.nil?
-  spacing('Founder')
+  spacing('Loi')
   loi = User.create!(email: 'datloiboi@gmail.com',
                      password: 'asdfas',
                      password_confirmation: 'asdfas',

@@ -3,10 +3,11 @@ import Moment from 'react-moment';
 import { Panel, DropdownButton, MenuItem } from 'react-bootstrap'
 
 const Post = ({ post, onRemovePost }) => {
+  console.log('Post is: ', post)
   return (
     <Panel bsStyle='primary' key={post.id}>
       <Panel.Heading style={styles.header} onClick={() => console.log('clicked')}>
-        <Panel.Title componentClass='h3'>{post.user.first_name + ' ' + post.user.last_name}</Panel.Title>
+        <Panel.Title componentClass='h3'>{post.user.full_name}</Panel.Title>
         <Panel.Title componentClass='h3'>
           <Moment fromNow id='post'>
             {post.created_at}
