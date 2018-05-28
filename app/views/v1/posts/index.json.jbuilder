@@ -9,8 +9,10 @@ json.call(@posts) do |post|
   json.user do
     user = post.user.decorate
     url = 'https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png'
+
     json.id user.id
     json.full_name user.full_name
+
     if user.profile_photos.attached?
       json.profile_photo_url user.profile_photos.last.service_url
     else
