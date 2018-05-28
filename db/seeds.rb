@@ -88,7 +88,7 @@ if Stage.first.nil?
     { name: '212' },
     { name: 'EnvyNightclub' },
     { name: 'Glow' },
-    { name: 'lush' },
+    { name: 'Lush' },
     { name: 'ApocalypseNow' },
     { name: 'RepublicClub' },
     { name: 'ChillSkybar' }
