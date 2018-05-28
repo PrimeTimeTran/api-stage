@@ -20,6 +20,6 @@ class User < ApplicationRecord
   has_many :private_conversations, -> { where('conversations.stage_id IS NULL') }, through: :user_conversations, source: :conversation
 
   has_many :posts
-  has_many :friendships
-  has_many :friends, through: :friendships, source: :friend
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
 end

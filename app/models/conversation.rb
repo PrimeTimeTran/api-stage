@@ -7,4 +7,5 @@ class Conversation < ApplicationRecord
   has_many :users, through: :user_conversations
 
   has_many :messages
+  has_many :uploads, through: :messages, source: :upload_attachment
 end

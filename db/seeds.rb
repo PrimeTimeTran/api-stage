@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 def spacing(name)
-  puts("\n\n============= Seeding: #{name}")
-  puts('====================================================')
+  puts("\n============= Seeding: #{name}")
+  p("====================================================")
 end
 
 if User.first.nil?
@@ -61,18 +61,17 @@ if User.first.nil?
     )
   end
 
-  users = User.all.to_a
+  other_users = User.all.to_a
 
-  users.each do |user|
-    other_users = User.where('id != ?', user.id)
-
+  User.all.each do |user|
+    other_users.shift
     other_users.each do |other_user|
       conversation = Conversation.create!
 
       user.user_conversations.create!(conversation: conversation)
       other_user.user_conversations.create!(conversation: conversation)
 
-      Friendship.create!(user_id: user.id, friend_id: other_user.id, status: 0)
+      Friendship.create!(user: user, friend_id: other_user.id, status: 0)
       Friendship.create!(user_id: other_user.id, friend_id: user.id, status: 0)
 
       participants = conversation.users.collect(&:first_name).join(' & ')
@@ -121,5 +120,40 @@ if Post.first.nil?
     )
     post.created_at = Faker::Time.between(DateTime.now - 7, DateTime.now)
     post.save
+  end
+end
+
+
+if Message.first.nil?
+  private_conversations = Conversation.where(stage_id: nil)
+
+  private_conversations.each do |conversation|
+    # spacing('Private Conversations')
+    user_ids = conversation.users.to_a.collect(&:id)
+    messages_count = (10..50).to_a.sample
+    messages_count.times do
+      Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 5))
+    end
+  end
+
+  stage_conversations = Conversation.where.not(stage_id: nil)
+
+  stage_conversations.each do |conversation|
+    # spacing('Stage Conversations')
+    user_ids = conversation.users.to_a.collect(&:id)
+    messages_count = (10..100).to_a.sample
+    messages_count.times do
+      message = Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 5))
+      if (1..7).to_a.sample == 1
+        # user = User.all.sample.first_name.downcase
+        # image_path = "#{Dir.pwd}/db/people/#{user}.jpg"
+
+        # message.upload.attach(
+        #   io: File.open(image_path),
+        #   filename: 'loi.jpg',
+        #   content_type: 'application/jpg'
+        # )
+      end
+    end
   end
 end
