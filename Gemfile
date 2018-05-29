@@ -55,7 +55,7 @@ gem 'aws-sdk-s3', require: false
 gem 'devise'
 gem 'draper'
 gem 'faker', '~> 1.6', '>= 1.6.6'
-gem 'fast_jsonapi'
+gem 'active_model_serializers', '~> 0.10.2'
 gem 'jwt'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible

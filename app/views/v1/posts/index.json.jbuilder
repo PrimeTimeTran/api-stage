@@ -14,7 +14,7 @@ json.call(@posts) do |post|
     json.profile_photo_url url_for(user.most_recent_profile_photo)
   end
   json.reactions do
-    json.total post.reactions_count
+    json.total post.reactions_total_count
     json.likes post.likes_count
     json.hearts post.hearts_count
     json.wows post.wows_count

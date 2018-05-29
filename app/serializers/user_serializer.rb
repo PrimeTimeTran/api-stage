@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
-class UserSerializer
-  include FastJsonapi::ObjectSerializer
-  attributes :id, :first_name, :last_name, :profile_photo_url
+class UserSerializer < ApplicationSerializer
+  attributes :id, :profile_photo_url, :full_name
 
-  attribute :full_name do |obj|
-    "#{obj.first_name} #{obj.last_name}"
+  def decorated
+    object.decorate
   end
 
-  attribute :profile_photo_url do |obj|
-    obj.profile_photos.last.service_url.to_s
+  def full_name
+    decorated.full_name
+  end
+
+  def profile_photo_url
+    decorated.most_recent_profile_photo
   end
 end
