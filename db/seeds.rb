@@ -105,7 +105,7 @@ if Stage.first.nil?
       user = User.first
       image_path = "#{Dir.pwd}/db/stages/#{stage[:name]}/cover_photos/#{idx}.jpg"
       ProfilePhoto.create!(user: user)
-      upload = stage.uploads.create!(uploadable_id: stage.id, uploadable_type: ProfilePhoto, user: user)
+      upload = stage.uploads.create!(uploadable_id: stage.id, uploadable_type: ProfilePhoto, user: user, stage_id: stage.id)
       upload.media.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: 'application/jpg')
     end
 
@@ -120,13 +120,25 @@ end
 
 if Post.first.nil?
   spacing('Posts')
-  25.times do
+  types = ['like', 'heart', 'wow', 'laugh', 'sad']
+  users = User.all
+
+  10.times do
     post = Post.new(
       user_id: User.all.sample.id,
       body: Faker::Lorem.paragraphs((1..5).to_a.sample, true).join(' ')
     )
     post.created_at = Faker::Time.between(DateTime.now - 7, DateTime.now)
     post.save
+
+    (1..5).to_a.sample.times do
+      spacing('Comments')
+      post.comments.create!(user_id: users.sample.id, body: Faker::Lorem.paragraph(1, true, 5))
+    end
+    (0..10).to_a.sample.times do
+      spacing('Reactions')
+      post.reactions.create!(user_id: users.sample.id, reaction_type: types.sample)
+    end
   end
 end
 
