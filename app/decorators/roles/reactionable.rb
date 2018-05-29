@@ -1,5 +1,7 @@
 module Roles
   module Reactionable
+    REACTION_TYPE = { like: 0, heart: 1, wow: 2, laugh: 3, sad: 4 }
+
     def comments_total_count
       object.comments.count
     end
@@ -9,27 +11,27 @@ module Roles
     end
 
     def reactions_type_count(type)
-      object.reactions.collect(&:reaction_type).inject(0) {|counter, item| counter += item == type ?  1 : 0}
+      object.reactions.where('reaction_type = ?', type).count
     end
 
     def likes_count
-      reactions_type_count('like')
+      reactions_type_count(REACTION_TYPE[:like])
     end
 
     def hearts_count
-      reactions_type_count('heart')
+      reactions_type_count(REACTION_TYPE[:heart])
     end
 
     def wows_count
-      reactions_type_count('wow')
+      reactions_type_count(REACTION_TYPE[:wow])
     end
 
     def laughs_count
-      reactions_type_count('laugh')
+      reactions_type_count(REACTION_TYPE[:laugh])
     end
 
     def sads_count
-      reactions_type_count('sad')
+      reactions_type_count(REACTION_TYPE[:sad])
     end
   end
 end
