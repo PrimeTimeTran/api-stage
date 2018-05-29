@@ -19,6 +19,8 @@ export const addPost = (post) => {
 }
 
 export const initialPosts = () => {
+  const request = client();
+
   return (dispatch) => {
     request.get(`${API_ROOT}posts`)
       .then(response => {

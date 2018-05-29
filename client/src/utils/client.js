@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const localToken = localStorage.getItem('auth_token')
+const client = () => {
+  const token = localStorage.getItem('auth_token')
 
-const client = (token = localToken) => {
   const defaultOptions = {
     headers: {
         Authorization: token ? `Token ${token}` : '',

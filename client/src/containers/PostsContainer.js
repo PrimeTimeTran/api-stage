@@ -6,15 +6,10 @@ import { initialPosts, removePost } from '../actions';
 
 import Post from '../components/post';
 
-import './index.css';
-
 class PostsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { posts: [] };
-  }
-
-  componentWillMount() {
     this.props.initialPosts();
   }
 
@@ -24,14 +19,19 @@ class PostsContainer extends Component {
 
   render() {
     const { posts } = this.state
-    return (
-      <div className="container-posts">
-        {this.props.children}
-        {posts.map(post => {
-          return (<Post post={post} key={post.id} onRemovePost={this.props.onRemovePost} />)
-        })}
-      </div>
-    )
+    if (posts) {
+      return (
+        <div className="container-posts">
+          {this.props.children}
+          {posts.map(post => {
+            return (<Post post={post} key={post.id} onRemovePost={this.props.onRemovePost} />)
+          })}
+        </div>
+      )
+    } else {
+      <div>No Posts</div>
+    }
+
   }
 };
 

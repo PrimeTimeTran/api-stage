@@ -33,7 +33,6 @@ export const signUp = ({ email, password, password_confirmation }) => {
   return async (dispatch) => {
 
     const res = await axios.post(`${API_ROOT}signup`, { user: { email, password, password_confirmation }});
-    console.log('Response', res)
     localStorage.setItem('auth_token', res.data.token);
     dispatch({ type: AUTHENTICATE, payload: res.data });
   }

@@ -38,7 +38,7 @@ class Home extends Component {
             </Row>
           : <Row>
               <Col xs={12} md={8} />
-              <Col xs={12} md={4} style={{ marginTop: '1em' }}>
+              <Col xs={12} md={4} style={{ marginTop: '5em', paddingRight: '5em'}}>
                 <SignUpForm />
               </Col>
             </Row>

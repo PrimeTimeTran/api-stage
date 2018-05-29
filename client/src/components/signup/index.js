@@ -92,7 +92,6 @@ class SignUpForm extends Component {
             <form className='clearfix'>
               <FormGroup
                 controlId="formEmail"
-
                 className={`form-group ${this.errorClass(this.state.formErrors.email)}`}
               >
                 <ControlLabel>Email:</ControlLabel>
