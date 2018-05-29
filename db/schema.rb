@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_160519) do
+ActiveRecord::Schema.define(version: 2018_05_29_010044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,14 @@ ActiveRecord::Schema.define(version: 2018_05_28_160519) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "profile_photos", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "stage_id"
+    t.index ["user_id"], name: "index_profile_photos_on_user_id"
+  end
+
   create_table "reactions", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "reactionable_id"
@@ -109,6 +117,15 @@ ActiveRecord::Schema.define(version: 2018_05_28_160519) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "uploads", force: :cascade do |t|
+    t.integer "uploadable_id"
+    t.string "uploadable_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_uploads_on_user_id"
   end
 
   create_table "user_conversations", force: :cascade do |t|
@@ -140,5 +157,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_160519) do
   add_foreign_key "comments", "users"
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "profile_photos", "users"
   add_foreign_key "reactions", "users"
+  add_foreign_key "uploads", "users"
 end

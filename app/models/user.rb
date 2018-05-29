@@ -8,8 +8,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many_attached :photos
-  has_many_attached :profile_photos
+  has_many :uploads
+  has_many :profile_photos
 
   has_many :user_conversations, dependent: :destroy
   has_many :conversations, through: :user_conversations

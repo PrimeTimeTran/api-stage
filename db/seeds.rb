@@ -14,7 +14,9 @@ if User.first.nil?
                      last_name: 'Tran')
 
   image_path = "#{Dir.pwd}/db/people/loi.jpg"
-  loi.profile_photos.attach(
+  loi.profile_photos.create!
+  upload = loi.uploads.create!(uploadable_id: 1, uploadable_type: ProfilePhoto)
+  upload.media.attach(
     io: File.open(image_path),
     filename: 'loi.jpg',
     content_type: 'application/jpg'
@@ -54,7 +56,9 @@ if User.first.nil?
     name = person[:first_name].downcase
     user = User.create!(person)
     image_path = "#{Dir.pwd}/db/people/#{name}.jpg"
-    user.profile_photos.attach(
+    user.profile_photos.create!
+    upload = user.uploads.create!(uploadable_id: user.id, uploadable_type: ProfilePhoto)
+    upload.media.attach(
       io: File.open(image_path),
       filename: "#{name}.jpg",
       content_type: 'application/jpg'
@@ -98,8 +102,11 @@ if Stage.first.nil?
     stage = Stage.create!(name: stage[:name])
 
     (1..3).to_a.each do |idx|
+      user = User.first
       image_path = "#{Dir.pwd}/db/stages/#{stage[:name]}/cover_photos/#{idx}.jpg"
-      stage.cover_photos.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: 'application/jpg')
+      ProfilePhoto.create!(user: user)
+      upload = stage.uploads.create!(uploadable_id: stage.id, uploadable_type: ProfilePhoto, user: user)
+      upload.media.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: 'application/jpg')
     end
 
     stage_conversation = stage.conversations.create!(name: stage.name + ' public')

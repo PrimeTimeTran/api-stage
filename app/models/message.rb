@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   belongs_to :conversation
 
   validates :body, presence: true
-  has_one_attached :upload
+  has_many :uploads, as: :uploadable
 
   default_scope { order(created_at: 'DESC') }
 end
