@@ -39,5 +39,10 @@ module ApiStage
         resource '*', headers: :any, methods: %i[get post options delete]
       end
     end
+
+    Rails.application.routes.default_url_options = {
+      host: ENV['EXTERNAL_HOST'] || 'lit-brushlands-65490.herokuapp.com',
+      protocol: ENV['EXTERNAL_HOST_PROTOCOL'] || 'http'
+    }
   end
 end
