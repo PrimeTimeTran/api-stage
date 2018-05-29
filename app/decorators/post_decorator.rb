@@ -1,4 +1,5 @@
 class PostDecorator < ApplicationDecorator
   delegate_all
-  include Roles::ReactionsCountable
+  include Roles::Reactionable
+  include Roles::Uploadable
 end

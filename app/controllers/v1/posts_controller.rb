@@ -7,7 +7,7 @@ module V1
     # GET /posts
     def index
       @posts = Post.all.order('created_at DESC')
-      render json: @posts, include: ['user', 'comments', 'reactions', 'uploads']
+      render json: @posts
     end
 
     # GET /posts/1

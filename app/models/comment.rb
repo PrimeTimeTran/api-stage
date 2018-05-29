@@ -4,5 +4,5 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true
   has_many :reactions, as: :reactionable
-  has_many :uploads, as: :uploadable
+  has_one :upload, as: :uploadable
 end

@@ -1,8 +1,7 @@
 class CommentSerializer < ApplicationSerializer
-  attributes :id, :body, :user, :reactions_count, :owner, :uploads
+  attributes :id, :body, :user, :reactions_count, :owner, :upload
 
   has_many :reactions
-  has_many :uploads
 
   def owner
     scope.id == object.user_id
@@ -22,5 +21,9 @@ class CommentSerializer < ApplicationSerializer
 
   def reactions_count
     decorated.reactions_total_count
+  end
+
+  def upload
+    decorated.url
   end
 end

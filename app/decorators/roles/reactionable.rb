@@ -1,5 +1,5 @@
 module Roles
-  module ReactionsCountable
+  module Reactionable
     def comments_total_count
       object.comments.count
     end
