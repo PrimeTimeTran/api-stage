@@ -1,5 +1,8 @@
 class ReactionSerializer < ApplicationSerializer
-  attributes :id, :reaction_type, :user
+  attributes :id,
+             :reaction_type,
+             :user,
+             :owner?
 
   def user
     user = scope.decorate

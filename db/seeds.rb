@@ -147,23 +147,23 @@ if Message.first.nil?
   private_conversations = Conversation.where(stage_id: nil)
 
   private_conversations.each do |conversation|
-    # spacing('Private Conversations')
+    spacing('Private Conversations')
     user_ids = conversation.users.to_a.collect(&:id)
-    messages_count = (10..50).to_a.sample
+    messages_count = (10..30).to_a.sample
     messages_count.times do
-      Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 5))
+      Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 6))
     end
   end
 
   stage_conversations = Conversation.where.not(stage_id: nil)
 
   stage_conversations.each do |conversation|
-    # spacing('Stage Conversations')
+    spacing('Stage Conversations')
     user_ids = conversation.users.to_a.collect(&:id)
-    messages_count = (10..100).to_a.sample
+    messages_count = (10..25).to_a.sample
     messages_count.times do
-      message = Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 5))
-      if (1..7).to_a.sample == 1
+      message = Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 8))
+      # if (1..7).to_a.sample == 1
         # user = User.all.sample.first_name.downcase
         # image_path = "#{Dir.pwd}/db/people/#{user}.jpg"
 
@@ -172,7 +172,7 @@ if Message.first.nil?
         #   filename: 'loi.jpg',
         #   content_type: 'application/jpg'
         # )
-      end
+      # end
     end
   end
 end

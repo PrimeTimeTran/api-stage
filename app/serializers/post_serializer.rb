@@ -4,7 +4,7 @@ class PostSerializer < ApplicationSerializer
   attributes :id,
              :created_at,
              :body,
-             :owner,
+             :owner?,
              :reactions_count,
              :comments_count,
              :reactions_like,
@@ -18,14 +18,6 @@ class PostSerializer < ApplicationSerializer
   has_many :comments
   has_many :reactions
   has_many :uploads
-
-  def owner
-    scope.id == object.user_id
-  end
-
-  def decorated
-    object.decorate
-  end
 
   def reactions_count
     decorated.reactions_total_count

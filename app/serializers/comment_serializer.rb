@@ -1,15 +1,12 @@
 class CommentSerializer < ApplicationSerializer
-  attributes :id, :body, :user, :reactions_count, :owner, :upload
+  attributes :id,
+             :body,
+             :user,
+             :reactions_count,
+             :owner?,
+             :upload
 
   has_many :reactions
-
-  def owner
-    scope.id == object.user_id
-  end
-
-  def decorated
-    object.decorate
-  end
 
   def user
     user = scope.decorate
