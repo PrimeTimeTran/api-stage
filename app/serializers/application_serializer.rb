@@ -1,6 +1,5 @@
 class ApplicationSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  default_url_options[:host] = 'lit-brushlands-65490.herokuapp.com'
 
   def decorated
     @decorated_object ||= object.decorate
@@ -8,5 +7,11 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def owner?
     @owner ||= scope.id == object.user_id
+  end
+
+  def avatar_url
+    if decorated.most_recent_profile_photo
+      url_for(decorated.most_recent_profile_photo)
+    end
   end
 end

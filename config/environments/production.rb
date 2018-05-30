@@ -33,7 +33,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :local
+  config.active_storage.service = :aws
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -58,6 +58,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "api-stage_#{Rails.env}"
 
   config.action_mailer.default_url_options = { host: 'lit-brushlands-65490.herokuapp.com' }
+  Rails.application.routes.default_url_options[:host] = 'lit-brushlands-65490.herokuapp.com'
 
   config.action_mailer.perform_caching = false
 
