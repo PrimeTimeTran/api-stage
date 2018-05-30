@@ -8,6 +8,7 @@ import {
 import PostsContainer from '../containers/PostsContainer';
 import NavigationPanel from '../components/NavigationPanel';
 import NavbarContainer from '../containers/NavbarContainer';
+import Messages from './Messages';
 
 import SignUpForm from '../components/signup';
 import NewPostForm from '../components/NewPostForm';
@@ -40,6 +41,7 @@ class Home extends Component {
               <Col xs={12} md={8} />
               <Col xs={12} md={4} style={{ marginTop: '5em', paddingRight: '5em'}}>
                 <SignUpForm />
+                <Messages />
               </Col>
             </Row>
           }

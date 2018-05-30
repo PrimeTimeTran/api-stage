@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.2.0",
     "axios": "^0.18.0",
     "bootstrap": "^3.3.7",
     "lodash": "^4.17.10",
@@ -18,7 +19,7 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.80.0"
+    "semantic-ui-react": "^0.80.2"
   },
   "scripts": {
     "start": "react-scripts start",
