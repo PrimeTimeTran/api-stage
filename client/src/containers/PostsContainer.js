@@ -24,7 +24,9 @@ class PostsContainer extends Component {
         <div className="container-posts">
           {this.props.children}
           {posts.map(post => {
-            return (<Post post={post} key={post.id} onRemovePost={this.props.onRemovePost} />)
+            return (
+              <Post post={post} key={post.id} onRemovePost={this.props.onRemovePost} />
+            )
           })}
         </div>
       )

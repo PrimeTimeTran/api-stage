@@ -2,7 +2,9 @@ import React from 'react';
 import Moment from 'react-moment';
 import { Panel, DropdownButton, MenuItem } from 'react-bootstrap'
 
-const Post = ({ post, onRemovePost }) => {
+import CommentContainer from '../../containers/CommentContainer';
+
+const Post = ({ post, comments, onRemovePost }) => {
   return (
     <Panel bsStyle='primary' key={post.id}>
       <Panel.Heading style={styles.header} onClick={() => console.log('clicked')}>
@@ -30,6 +32,9 @@ const Post = ({ post, onRemovePost }) => {
         </Panel.Title>
       </Panel.Heading>
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
+      <CommentContainer
+        comments={post.comments}
+      />
     </Panel>
   )
 }
