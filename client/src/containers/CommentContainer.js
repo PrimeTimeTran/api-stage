@@ -17,9 +17,10 @@ class CommentContainer extends Component {
         { comments && comments.map(comment => {
           return <Comment comment={comment} key={comment.id} />
         })}
+        {/* <CommentForm onClick={addComment}/> */}
       </div>
     )
   }
 };
 
-export default  CommentContainer;
+export default CommentContainer;

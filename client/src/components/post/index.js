@@ -38,17 +38,10 @@ const Post = ({ post, comments, onRemovePost }) => {
       </Panel.Heading>
 
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
-        { (post.uploads.length < 1) &&
-          <div>
-            Empty
-          </div>
-        }
-        { (post.uploads.length == 1) &&
-          <div>
-            <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/>
-          </div>
-        }
+        { (post.uploads.length < 1) && <div> Empty </div> }
+        { (post.uploads.length == 1) && <div> <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/></div> }
       <CommentContainer
+        post={post}
         comments={post.comments}
       />
     </Panel>
