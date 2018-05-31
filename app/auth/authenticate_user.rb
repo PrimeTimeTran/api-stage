@@ -15,6 +15,10 @@ class AuthenticateUser
     }
   end
 
+  def socket_call(token)
+    JsonWebToken.decode(token)
+  end
+
   private
 
   attr_reader :email, :password
