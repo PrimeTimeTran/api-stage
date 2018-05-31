@@ -1,19 +1,22 @@
 import React from 'react';
 import Moment from 'react-moment';
-import { Panel, DropdownButton, MenuItem } from 'react-bootstrap'
+import { Panel, DropdownButton, MenuItem, Image } from 'react-bootstrap'
 
 import CommentContainer from '../../containers/CommentContainer';
 
 const Post = ({ post, comments, onRemovePost }) => {
+  const avatar = post.user.avatar_url
   return (
-    <Panel bsStyle='primary' key={post.id}>
+    <Panel bsStyle='primary' key={post.id} clear>
       <Panel.Heading style={styles.header} onClick={() => console.log('clicked')}>
-        <Panel.Title componentClass='h3'>{post.user.full_name}</Panel.Title>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <Image src={avatar} circle style={{ height: '50px', width: '50px'}}/>
+          <Panel.Title componentClass='h3' style={{ marginLeft: '5px' }}>{post.user.full_name}</Panel.Title>
+        </div>
         <Panel.Title componentClass='h3'>
           <Moment fromNow id='post'>
             {post.created_at}
           </Moment>
-
           <DropdownButton
             title={ <span><i className="glyphicon glyphicon-option-horizontal"></i></span> }
             id={post.id}
@@ -31,6 +34,7 @@ const Post = ({ post, comments, onRemovePost }) => {
 
         </Panel.Title>
       </Panel.Heading>
+
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
       <CommentContainer
         comments={post.comments}
