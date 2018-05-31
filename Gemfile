@@ -57,7 +57,7 @@ gem 'devise'
 gem 'draper'
 gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'jwt'
-gem 'redis', '~> 3.3', '>= 3.3.1'
+gem 'redis', '3.3.3'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
