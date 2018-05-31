@@ -6,6 +6,7 @@ import CommentContainer from '../../containers/CommentContainer';
 
 const Post = ({ post, comments, onRemovePost }) => {
   const avatar = post.user.avatar_url
+  console.log('Props: ', post);
   return (
     <Panel bsStyle='primary' key={post.id} clear>
       <Panel.Heading style={styles.header} onClick={() => console.log('clicked')}>

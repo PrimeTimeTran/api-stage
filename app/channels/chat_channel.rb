@@ -8,8 +8,6 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def perform
-    binding.pry
-
     # message = Message.new(author: current_user, text: payload["message"])
   end
 

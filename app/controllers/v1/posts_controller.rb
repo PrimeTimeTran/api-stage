@@ -20,6 +20,7 @@ module V1
       @post = Post.new(post_params)
 
       if @post.save
+        @post.uploads.create!(user: @post.user, media: upload_params["upload"]) if upload_params
         @post
       else
         render json: @post.errors, status: :unprocessable_entity
@@ -47,7 +48,11 @@ module V1
     end
 
     def post_params
-      params.permit(:body, :user_id, :upload)
+      params.permit(:body, :user_id)
+    end
+
+    def upload_params
+      params.permit(:upload)
     end
   end
 end
