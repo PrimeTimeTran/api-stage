@@ -5,7 +5,8 @@ import { Panel, DropdownButton, MenuItem, Image } from 'react-bootstrap'
 import CommentContainer from '../../containers/CommentContainer';
 
 const Post = ({ post, comments, onRemovePost }) => {
-  const avatar = post.user.avatar_url
+  const avatar = post.user.avatar_url;
+
   console.log('Props: ', post);
   return (
     <Panel bsStyle='primary' key={post.id} clear>
@@ -37,6 +38,16 @@ const Post = ({ post, comments, onRemovePost }) => {
       </Panel.Heading>
 
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
+        { (post.uploads.length < 1) &&
+          <div>
+            Empty
+          </div>
+        }
+        { (post.uploads.length == 1) &&
+          <div>
+            <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/>
+          </div>
+        }
       <CommentContainer
         comments={post.comments}
       />
