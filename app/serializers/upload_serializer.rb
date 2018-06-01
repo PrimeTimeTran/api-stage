@@ -1,5 +1,5 @@
 class UploadSerializer < ApplicationSerializer
-  attributes :id, :url
+  attributes :id, :url, :media_type
 
   def url
     decorated.url

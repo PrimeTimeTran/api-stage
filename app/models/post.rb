@@ -6,5 +6,5 @@ class Post < ApplicationRecord
   has_many :reactions, as: :reactionable
 
   validates_presence_of :body
-  has_many :uploads, as: :uploadable
+  has_many :uploads, as: :uploadable, dependent: :destroy
 end
