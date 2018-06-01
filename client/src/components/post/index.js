@@ -7,9 +7,8 @@ import CommentContainer from '../../containers/CommentContainer';
 const Post = ({ post, comments, onRemovePost }) => {
   const avatar = post.user.avatar_url;
 
-  console.log('Props: ', post);
   return (
-    <Panel bsStyle='primary' key={post.id} clear>
+    <Panel bsStyle='primary' key={post.id}>
       <Panel.Heading style={styles.header} onClick={() => console.log('clicked')}>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           <Image src={avatar} circle style={{ height: '50px', width: '50px'}}/>
@@ -39,7 +38,7 @@ const Post = ({ post, comments, onRemovePost }) => {
 
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
         { (post.uploads.length < 1) && <div> Empty </div> }
-        { (post.uploads.length == 1) && <div> <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/></div> }
+        { (post.uploads.length === 1) && <div> <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/></div> }
       <CommentContainer
         post={post}
         comments={post.comments}
