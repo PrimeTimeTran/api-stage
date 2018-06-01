@@ -8,7 +8,7 @@ import {
   Glyphicon
 } from "react-bootstrap";
 
-class SignInForm extends Component {
+class NavigationRightContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,4 +103,4 @@ const styles = {
   }
 }
 
-export default SignInForm;
+export default NavigationRightContainer;

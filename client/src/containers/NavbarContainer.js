@@ -10,7 +10,7 @@ import {
 
 import { signIn, signOut } from '../actions';
 
-import SignInForm from '../components/SignInForm'
+import NavigationRightContainer from '../components/NavigationRightContainer'
 
 class NavbarContainer extends Component {
 
@@ -37,7 +37,7 @@ class NavbarContainer extends Component {
           </Navbar.Header>
 
           <Navbar.Collapse>
-            <SignInForm {...this.props} />
+            <NavigationRightContainer {...this.props} />
           </Navbar.Collapse>
 
         </div>

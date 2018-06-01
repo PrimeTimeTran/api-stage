@@ -30,10 +30,7 @@ class PostsContainer extends Component {
           })}
         </div>
       )
-    } else {
-      <div>No Posts</div>
     }
-
   }
 };
 

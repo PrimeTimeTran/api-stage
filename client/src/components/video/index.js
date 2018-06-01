@@ -57,11 +57,12 @@ export default class VideoPlayer extends Component {
   }
 
   render() {
+    const { src, height } = this.props;
     return (
       <div data-vjs-player>
         <video
           style={{
-            100,
+            height,
           }}
           ref={ref => (this.$video = ref)}
           // className={cls(className, 'video-js vjs-default-skin app-video')}
