@@ -1,5 +1,6 @@
 class ConversationSerializer < ApplicationSerializer
-  attributes :id, :messages
-  has_many :users
+  attributes :id
 
+  has_many :users
+  has_many :messages
 end

@@ -1,8 +1,7 @@
 module V1
   class ConversationsController < ApplicationController
     def index
-      binding.remote_pry
-
+      @conversations = current_user.conversations
     end
   end
 end
