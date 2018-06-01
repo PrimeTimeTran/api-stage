@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe ConversationsController, type: :controller do
+RSpec.describe V1::ConversationsController, type: :controller do
 
 end

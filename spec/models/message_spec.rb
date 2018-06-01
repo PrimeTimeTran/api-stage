@@ -2,9 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.describe Comment, type: :model do
+RSpec.describe Message, type: :model do
   it { should belong_to(:user) }
-  it { should belong_to(:commentable) }
-  it { should have_many(:reactions) }
+  it { should belong_to(:conversation) }
   it { should have_one(:upload) }
 end

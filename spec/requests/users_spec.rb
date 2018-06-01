@@ -6,10 +6,18 @@ RSpec.describe 'Users API', type: :request do
   let(:user) { build(:user) }
   let(:headers) { valid_headers.except('Authorization') }
   let(:invalid_attributes) do
-    attributes_for(:user, password: 'asdf', password_confirmation: 'asdf')
+    attributes_for(:user,
+      password: 'asdf',
+      password_confirmation: 'asdf'
+    )
   end
   let(:valid_attributes) do
-    attributes_for(:user, password: user.password, password_confirmation: user.password)
+    attributes_for(:user,
+      password: user.password,
+      password_confirmation: user.password,
+      first_name: user.first_name,
+      last_name: user.last_name
+    )
   end
 
   # User signup test suite
@@ -18,7 +26,7 @@ RSpec.describe 'Users API', type: :request do
       before { post '/v1/signup', params: { user: valid_attributes }.to_json, headers: headers }
 
       it 'creates a new user' do
-        expect(response).to have_http_status(201)
+        expect(response).to have_http_status(200)
       end
 
       it 'returns success message' do
@@ -26,7 +34,7 @@ RSpec.describe 'Users API', type: :request do
       end
 
       it 'returns an authentication token' do
-        expect(json['auth_token']).not_to be_nil
+        expect(json['token']).not_to be_nil
       end
     end
 

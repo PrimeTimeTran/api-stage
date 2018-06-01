@@ -11,7 +11,8 @@ class AuthenticateUser
     token = JsonWebToken.encode(user_id: user.id) if user
     {
       token: token,
-      user: user
+      user: user,
+      message: Info.account_created
     }
   end
 
@@ -27,7 +28,6 @@ class AuthenticateUser
   def user
     user = User.find_by(email: email)
     return user if user&.valid_password?(password)
-    # raise Authentication error if credentials are invalid
     raise(ExceptionHandler::AuthenticationError, Info.invalid_credentials)
   end
 end
