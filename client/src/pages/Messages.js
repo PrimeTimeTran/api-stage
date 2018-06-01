@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import {
   Col,
   Row

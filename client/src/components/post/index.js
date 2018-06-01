@@ -5,8 +5,8 @@ import { Panel, DropdownButton, MenuItem, Image } from 'react-bootstrap'
 import CommentContainer from '../../containers/CommentContainer';
 
 const Post = ({ post, comments, onRemovePost }) => {
-  const avatar = post.user.avatar_url;
-  console.log('Post:', post)
+  const avatar = post.user.avatar_url
+  const oneMedia = post.uploads.length === 1
 
   return (
     <Panel bsStyle='primary' key={post.id}>
@@ -38,15 +38,13 @@ const Post = ({ post, comments, onRemovePost }) => {
       </Panel.Heading>
 
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
-        { (post.uploads.length < 1) && <div> Empty </div> }
-        { (post.uploads.length === 1) && (post.uploads[0].media_type === 'img') &&
-          <div>
+        { (oneMedia) && (post.uploads[0].media_type === 'img') && <div>
             <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/> { console.log(post.uploads[0]) }
           </div>
         }
-        { (post.uploads.length === 1) && (post.uploads[0].media_type === 'video') && <div>
-          <div className="embed-responsive embed-responsive-16by9">
-              <iframe class="embed-responsive-item" src={post.uploads[0].url}>
+        { (oneMedia) && (post.uploads[0].media_type === 'video') && <div>
+            <div className="embed-responsive embed-responsive-16by9">
+              <iframe className="embed-responsive-item" src={post.uploads[0].url} id={post.uploads[0].id}>
               </iframe>
             </div>
           </div>

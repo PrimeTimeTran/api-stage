@@ -20,7 +20,14 @@ module V1
       @post = Post.new(post_params)
 
       if @post.save
-        @post.uploads.create!(user: @post.user, media: upload_params["upload"]) if upload_params
+        if upload_params
+          upload_params.each do
+            @post.uploads.create!(user: @post.user, media: upload_params["upload"])
+            media = @post.uploads.last
+            media.media_type = params[:upload].content_type == 'video/mp4' ? 'video' : 'img'
+            media.save
+          end
+        end
         @post
       else
         render json: @post.errors, status: :unprocessable_entity
