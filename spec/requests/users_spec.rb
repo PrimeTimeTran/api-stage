@@ -13,6 +13,7 @@ RSpec.describe 'Users API', type: :request do
   end
   let(:valid_attributes) do
     attributes_for(:user,
+      email: user.email,
       password: user.password,
       password_confirmation: user.password,
       first_name: user.first_name,

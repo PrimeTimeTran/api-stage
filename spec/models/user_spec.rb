@@ -23,7 +23,5 @@ RSpec.describe User, type: :model do
     reactions
     comments
   ]
-  has_many.each do |model|
-    it { should have_many(model) }
-  end
+  has_many.each { |model| it { should have_many(model) } }
 end
