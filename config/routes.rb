@@ -12,7 +12,9 @@ Rails.application.routes.draw do
     resources :posts
     resources :stages
     resources :sessions
-    resources :conversations
+    resources :conversations do
+      resources :messages
+    end
 
     # Utilities
     get 'home/index'
