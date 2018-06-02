@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import client from '../../../axiosClient';
 
 class PostForm extends Component {
   state = {
