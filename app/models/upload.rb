@@ -1,5 +1,7 @@
 class Upload < ApplicationRecord
   belongs_to :user
-  has_one_attached :media
   belongs_to :uploadable, polymorphic: true
+  has_one_attached :media
+  has_many :reactions, as: :reactionable
+  has_many :comments, as: :commentable
 end

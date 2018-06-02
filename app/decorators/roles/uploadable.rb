@@ -4,7 +4,7 @@ module Roles
       if upload.present?
         upload.media.service_url
       else
-        nil
+        ''
       end
     end
   end
