@@ -16,6 +16,7 @@ if User.first.nil?
   image_path = "#{Dir.pwd}/db/people/loi.jpg"
   loi.profile_photos.create!
   upload = loi.uploads.create!(uploadable_id: 1, uploadable_type: ProfilePhoto)
+  puts image_path
   upload.media.attach(
     io: File.open(image_path),
     filename: 'loi.jpg',

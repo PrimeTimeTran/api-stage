@@ -2,6 +2,7 @@
 
 class UserDecorator < Draper::Decorator
   delegate_all
+  include Rails.application.routes.url_helpers
 
   def full_name
     return object.first_name + ' ' + object.last_name if object.first_name && object.last_name
@@ -10,7 +11,7 @@ class UserDecorator < Draper::Decorator
 
   def most_recent_profile_photo
     if object.uploads.present?
-      object.uploads.where('stage_id IS null').select { |upload| upload.uploadable_type == 'ProfilePhoto' }.last.media.service_url
+      url_for(object.uploads.where('stage_id IS null').select { |upload| upload.uploadable_type == 'ProfilePhoto' }.last.media)
     else
       'https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png'
     end
