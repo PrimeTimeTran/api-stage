@@ -1,7 +1,7 @@
 module V1
   class ConversationsController < ApplicationController
     def index
-      @conversations = current_user.conversations.order(created_at: :desc)
+      @conversations = current_user.conversations
       render json: @conversations
     end
   end

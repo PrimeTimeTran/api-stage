@@ -9,7 +9,7 @@ class ConversationSerializer < ApplicationSerializer
     message = object.messages.last
     {
       body: message.body,
-      sent_at: time(message.created_at)
+      sent_at: time(message.updated_at)
     }
 
   end
