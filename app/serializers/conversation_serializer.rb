@@ -2,7 +2,8 @@ class ConversationSerializer < ApplicationSerializer
   attributes :id,
              :last_message,
              :other_users,
-             :last_message_from_user
+             :last_message_from_user,
+             :name
 
   def last_message
     object.messages.last
@@ -12,7 +13,7 @@ class ConversationSerializer < ApplicationSerializer
     user = object.messages.last.user
     {
       name: user.decorate.full_name,
-      avatar: url_for(user.decorate.most_recent_profile_photo)
+      avatar_url: url_for(user.decorate.most_recent_profile_photo)
     }
   end
 
