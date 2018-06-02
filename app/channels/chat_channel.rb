@@ -4,15 +4,14 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
   end
 
   def perform
-    # message = Message.new(author: current_user, text: payload["message"])
   end
 
-  def send_message
-    binding.pry
-
+  def send_message(payload)
+    m = current_user.messages.create(conversation_id: payload['message']['conversation_id'], body: payload['message']['body'])
+    data = MessageSerializer.new(m)
+    ActionCable.server.broadcast('ChatChannel', data.to_json)
   end
 end

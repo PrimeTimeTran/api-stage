@@ -1,5 +1,10 @@
 class MessageSerializer < ApplicationSerializer
-  attributes :gifted_chat
+  attributes :gifted_chat,
+             :conversation_id
+
+  def conversation_id
+    object.conversation_id
+  end
 
   def gifted_chat
     user = object.user.decorate
