@@ -109,7 +109,7 @@ if Stage.first.nil?
       upload.media.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: 'application/jpg')
     end
 
-    stage_conversation = stage.conversations.create!(name: stage.name + ' public')
+    stage_conversation = stage.conversations.create!(name: stage.name)
 
     User.all.each do |user|
       spacing('Stage Conversations')

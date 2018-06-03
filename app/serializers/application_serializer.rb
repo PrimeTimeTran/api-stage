@@ -14,4 +14,10 @@ class ApplicationSerializer < ActiveModel::Serializer
       @avatar_url ||= url_for(decorated.most_recent_profile_photo)
     end
   end
+
+  def time(a)
+    return a.strftime('%I:%M %p') if a > 1.day.ago
+    return a.strftime('%a') if a > 7.days.ago
+    a.strftime('%m-%d')
+  end
 end

@@ -9,7 +9,7 @@ class UserDecorator < Draper::Decorator
 
   def most_recent_profile_photo
     if object.uploads.present?
-      object.uploads.where('stage_id IS null').select { |upload| upload.uploadable_type == 'ProfilePhoto' }.last.media.service_url
+      object.uploads.select { |upload| upload.uploadable_type == 'ProfilePhoto' }.last.media.service_url
     else
       'https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png'
     end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :email, uniqueness: { case_sensitive: false }
+  validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
   validates :first_name, :last_name, presence: true
 
   # Include default devise modules. Others available are:

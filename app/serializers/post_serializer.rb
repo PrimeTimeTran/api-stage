@@ -19,6 +19,9 @@ class PostSerializer < ApplicationSerializer
   has_many :reactions
   has_many :uploads
 
+  def created_at
+    time(decorated.created_at)
+  end
   def reactions_count
     decorated.reactions_total_count
   end
