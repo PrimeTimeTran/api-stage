@@ -10,7 +10,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def send_message(payload)
-    m = current_user.messages.create(conversation_id: payload['message']['conversation_id'], body: payload['message']['body'])
+    m = current_user.messages.create(conversation_id: payload['data']['conversation_id'], body: payload['data']['body'])
     data = MessageSerializer.new(m)
     ActionCable.server.broadcast('ChatChannel', data.to_json)
   end

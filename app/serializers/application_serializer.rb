@@ -11,7 +11,7 @@ class ApplicationSerializer < ActiveModel::Serializer
 
   def avatar_url
     if decorated.most_recent_profile_photo
-      url_for(decorated.most_recent_profile_photo)
+      @avatar_url ||= url_for(decorated.most_recent_profile_photo)
     end
   end
 end

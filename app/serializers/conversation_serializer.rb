@@ -15,10 +15,11 @@ class ConversationSerializer < ApplicationSerializer
   end
 
   def last_message_from_user
-    user = object.messages.select {|message| message.user_id != current_user.id}.last.user
+    # user = object.messages.select {|message| message.user_id != current_user.id}.last.user.decorate
+    user = object.messages.last.user.decorate
     {
-      name: user.decorate.full_name,
-      avatar_url: url_for(user.decorate.most_recent_profile_photo)
+      name: user.full_name,
+      avatar_url: url_for(user.most_recent_profile_photo)
     }
   end
 
