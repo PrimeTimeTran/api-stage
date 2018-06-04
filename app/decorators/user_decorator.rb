@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-class UserDecorator < Draper::Decorator
-  include Rails.application.routes.url_helpers
-
+class UserDecorator < ApplicationDecorator
   delegate_all
 
   def full_name
