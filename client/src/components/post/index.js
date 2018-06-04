@@ -38,6 +38,10 @@ const Post = ({ post, comments, onRemovePost }) => {
       </Panel.Heading>
 
       <Panel.Body style={styles.alignLeft}>{post.body}</Panel.Body>
+
+        {/* Refused to display in a frame because it set 'X-Frame-Options' to 'sameorigin'. */}
+        {console.log(post.uploads[0])}
+
         { (oneMedia) && (post.uploads[0].media_type === 'img') && <div>
             <Image src={post.uploads[0].url} rounded style={{ height: '15em', width: '15em'}}/> { console.log(post.uploads[0]) }
           </div>

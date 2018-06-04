@@ -30,10 +30,18 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :aws
+  config.active_storage.service = :local
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  Rails.application.routes.default_url_options[:host] = 'http://172.20.10.2:3000'
+
+  # Jame's configuration to work locally
+  # Rails.application.routes.default_url_options[:host] = '192.168.1.139:3000'
+
+  # TODO: Make this configuration work. Doesn't fetch images with IP.
+  # Rails.application.routes.default_url_options[:host] = '192.168.56.1:3000'
+
+  # Loi's configuration to work locally
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
