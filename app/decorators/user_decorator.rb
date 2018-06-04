@@ -2,6 +2,7 @@
 
 class UserDecorator < Draper::Decorator
   include Rails.application.routes.url_helpers
+
   delegate_all
 
   def full_name
