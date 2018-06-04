@@ -4,7 +4,7 @@ const apiVersion = 'v1';
 const hostname = window && window.location && window.location.hostname;
 
 if (hostname === 'localhost') {
-  backendHost = 'http://localhost:3001';
+  backendHost = 'http://localhost:3000';
 } else {
   backendHost = 'https://lit-brushlands-65490.herokuapp.com';
 }

@@ -6,7 +6,7 @@ let socketType;
 const hostname = window && window.location && window.location.hostname;
 
 if (hostname === 'localhost') {
-  backendHost = 'localhost:3001';
+  backendHost = 'localhost:3000';
   socketType = 'ws';
 } else {
   backendHost = 'lit-brushlands-65490.herokuapp.com';

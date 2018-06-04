@@ -6,7 +6,7 @@ module V1
 
     # GET /posts
     def index
-      @posts = Post.all.order('created_at DESC')
+      @posts = Post.all.order('created_at DESC').limit(2)
       render json: @posts
     end
 
@@ -63,12 +63,3 @@ module V1
     end
   end
 end
-
-# Signup
-# http :3001/v1/signup email=loi@gmail.com password=asdfas password_confirmation=asdfas
-
-# Login
-# http :3001/v1/auth/login email=do@gmail.com password=asdfas password_confirmation=asdfas
-
-# Fetch posts
-# http :3001/v1/posts Accept:"application/vnd.posts.v1+json" Authorization:"eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2lkIjoyMSwiZXhwIjoxNTU5NTI3MTI3fQ.06c2qq-LSx3WekKrOcvuhGLiNTPndu394pTHc53qgTgBJM3dK1LFFgToaXoCxhBK92oESkygzBmhTAzjDDeY1A"

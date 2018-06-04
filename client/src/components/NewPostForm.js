@@ -43,7 +43,7 @@ class NewPostForm extends Component {
     data.append('body', this.state.body)
     data.append('user_id', authenticated.user.id)
 
-    request.post('http://localhost:3001/v1/posts', data)
+    request.post('http://localhost:3000/v1/posts', data)
       .then(res => {
         console.log('Response', res)
       })
