@@ -6,7 +6,7 @@ module V1
 
     # GET /posts
     def index
-      @posts = Post.all.order('created_at DESC').limit(2)
+      @posts = Post.all.order('created_at DESC')
       render json: @posts
     end
 
