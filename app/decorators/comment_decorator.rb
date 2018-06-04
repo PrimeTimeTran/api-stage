@@ -1,5 +1,7 @@
 class CommentDecorator < ApplicationDecorator
-  delegate_all
+  include Rails.application.routes.url_helpers
   include Roles::Reactionable
   include Roles::Uploadable
+
+  delegate_all
 end
