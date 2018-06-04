@@ -3,18 +3,16 @@ class ConversationSerializer < ApplicationSerializer
              :last_message,
              :other_users,
              :last_message_from_user,
-             :name
+             :name,
+             :is_stage
 
   def last_message
     message = object.messages.last
-    if scope.id == message.user_id
-      body = "You: " + message.body
-    end
+    body = "You: " + message.body if scope.id == message.user_id
     {
       body: (body || message.body),
       sent_at: time(message.updated_at)
     }
-
   end
 
   def last_message_from_user
@@ -28,5 +26,9 @@ class ConversationSerializer < ApplicationSerializer
 
   def other_users
     object.users.select {|user| user.id != current_user.id }
+  end
+
+  def is_stage
+    object.stage_id.present?
   end
 end

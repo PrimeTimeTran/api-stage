@@ -106,7 +106,7 @@ if Stage.first.nil?
       user = User.first
       image_path = "#{Dir.pwd}/db/stages/#{stage[:name]}/cover_photos/#{idx}.jpg"
       ProfilePhoto.create!(user: user)
-      upload = stage.uploads.create!(uploadable_id: stage.id, uploadable_type: ProfilePhoto, user: user, stage_id: stage.id)
+      upload = stage.uploads.create!(uploadable_id: stage.id, uploadable_type: ProfilePhoto, user: user, stage_id: stage.id, media_type: 'img')
       upload.media.attach(io: File.open(image_path), filename: "#{idx}.jpg", content_type: 'application/jpg')
     end
 
