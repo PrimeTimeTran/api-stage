@@ -136,7 +136,7 @@ if Post.first.nil?
       user_id: User.all.sample.id,
       body: Faker::Lorem.paragraphs((1..5).to_a.sample, true).join(' ')
     )
-    post.created_at = Faker::Time.between(DateTime.now - 7, DateTime.now)
+    post.created_at = Faker::Time.between(DateTime.now - 1, DateTime.now)
     post.save
 
     (1..5).to_a.sample.times do
