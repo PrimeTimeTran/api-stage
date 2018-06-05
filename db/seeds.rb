@@ -11,43 +11,48 @@ if User.first.nil?
                      password: 'asdfas',
                      password_confirmation: 'asdfas',
                      first_name: 'Loi',
-                     last_name: 'Tran')
+                     last_name: 'Tran',
+                     city: 'Ho Chi Minh City',
+                     country: 'Vietnam',
+                     occupation: 'Developer')
 
-  image_path = "#{Dir.pwd}/db/people/loi.jpg"
-  loi.profile_photos.create!
-  upload = loi.uploads.create!(uploadable_id: 1, uploadable_type: ProfilePhoto)
-  upload.media.attach(
-    io: File.open(image_path),
-    filename: 'loi.jpg',
-    content_type: 'application/jpg'
-  )
+  (1..5).to_a.each do |file|
+  image_path = "#{Dir.pwd}/db/people/loi/#{file}.jpg"
+    loi.profile_photos.create!
+    upload = loi.uploads.create!(uploadable_id: 1, uploadable_type: ProfilePhoto, media_type: 'img')
+    upload.media.attach(
+      io: File.open(image_path),
+      filename: "#{file}.jpg",
+      content_type: 'application/jpg'
+    )
+  end
 
   # Example
   # {first_name: '', last_name: '', email: '@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
 
   people = [
-    { first_name: 'Charles', last_name: 'Lee', email: 'charles@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Christine', last_name: 'Nguyen', email: 'christine@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Do', last_name: 'Le', email: 'do@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Duc', last_name: 'Viettel', email: 'duc@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Gigi', last_name: 'Pham', email: 'gigi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Harley', last_name: 'Dinh', email: 'harley@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Hien', last_name: 'Nguyen', email: 'hien@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Kas', last_name: 'Patel', email: 'vikas@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Khanh', last_name: 'Vo', email: 'khanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Linh', last_name: 'Ha', email: 'linh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Mikey', last_name: 'Banks', email: 'mikey@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Mimi', last_name: 'Doan', email: 'mimi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'My', last_name: 'Pham', email: 'my@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Nhung', last_name: 'Tran', email: 'nhung@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Phan', last_name: 'Bui', email: 'phan@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Phuong', last_name: 'Tran', email: 'phuong@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Tai', last_name: 'Tran', email: 'tai@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Thanh', last_name: 'Boo', email: 'thanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Thao', last_name: 'Tran', email: 'thao@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Uyen', last_name: 'Dang', email: 'uyen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Van', last_name: 'Luu', email: 'van@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' },
-    { first_name: 'Yen', last_name: 'Nguyen', email: 'yen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas' }
+    { first_name: 'Charles', last_name: 'Lee', email: 'charles@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Developer' },
+    { first_name: 'Christine', last_name: 'Nguyen', email: 'christine@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Columbida' },
+    { first_name: 'Do', last_name: 'Le', email: 'do@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Chanel' },
+    { first_name: 'Duc', last_name: 'Viettel', email: 'duc@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Director' },
+    { first_name: 'Gigi', last_name: 'Pham', email: 'gigi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Loan Officer' },
+    { first_name: 'Harley', last_name: 'Dinh', email: 'harley@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Head of Engineering' },
+    { first_name: 'Hien', last_name: 'Nguyen', email: 'hien@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Sales Director' },
+    { first_name: 'Kas', last_name: 'Patel', email: 'vikas@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business Owner' },
+    { first_name: 'Khanh', last_name: 'Vo', email: 'khanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Photographer' },
+    { first_name: 'Linh', last_name: 'Ha', email: 'linh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'KTV Manager' },
+    { first_name: 'Mikey', last_name: 'Banks', email: 'mikey@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business Owner' },
+    { first_name: 'Mimi', last_name: 'Doan', email: 'mimi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'College Student' },
+    { first_name: 'My', last_name: 'Pham', email: 'my@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Account' },
+    { first_name: 'Nhung', last_name: 'Tran', email: 'nhung@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Sales & Marketing' },
+    { first_name: 'Phan', last_name: 'Bui', email: 'phan@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Digital Nomad' },
+    { first_name: 'Phuong', last_name: 'Tran', email: 'phuong@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Dealer' },
+    { first_name: 'Tai', last_name: 'Tran', email: 'tai@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Registered Nurse' },
+    { first_name: 'Thanh', last_name: 'Boo', email: 'thanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Startup Founder' },
+    { first_name: 'Thao', last_name: 'Tran', email: 'thao@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Information Technology' },
+    { first_name: 'Uyen', last_name: 'Dang', email: 'uyen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Registered Nurse' },
+    { first_name: 'Van', last_name: 'Luu', email: 'van@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Makeup Artist' },
+    { first_name: 'Yen', last_name: 'Nguyen', email: 'yen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business owner' }
   ]
 
   people.each do |person|
@@ -55,14 +60,17 @@ if User.first.nil?
 
     name = person[:first_name].downcase
     user = User.create!(person)
-    image_path = "#{Dir.pwd}/db/people/#{name}.jpg"
-    user.profile_photos.create!
-    upload = user.uploads.create!(uploadable_id: user.id, uploadable_type: ProfilePhoto)
-    upload.media.attach(
-      io: File.open(image_path),
-      filename: "#{name}.jpg",
-      content_type: 'application/jpg'
-    )
+
+    (1..5).to_a.each do |file|
+      image_path = "#{Dir.pwd}/db/people/#{name}/#{file}.jpg"
+      user.profile_photos.create!
+      upload = user.uploads.create!(uploadable_id: user.id, uploadable_type: ProfilePhoto, media_type: 'img')
+      upload.media.attach(
+        io: File.open(image_path),
+        filename: "#{file}.jpg",
+        content_type: 'application/jpg'
+      )
+    end
   end
 
   other_users = User.all.to_a
@@ -86,7 +94,6 @@ if User.first.nil?
 end
 
 if Stage.first.nil?
-
   spacing('Stages')
   stages = [
     { name: 'Bar2000', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 6', address: '171 Chợ Lớn', phone: '+84 28 3876 6217' },
@@ -164,16 +171,27 @@ if Message.first.nil?
     messages_count = (10..25).to_a.sample
     messages_count.times do
       message = Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 8))
-      # if (1..7).to_a.sample == 1
-        # user = User.all.sample.first_name.downcase
-        # image_path = "#{Dir.pwd}/db/people/#{user}.jpg"
-
-        # message.upload.attach(
-        #   io: File.open(image_path),
-        #   filename: 'loi.jpg',
-        #   content_type: 'application/jpg'
-        # )
-      # end
     end
   end
+
+
+  stage_conversation = Conversation.where.not(stage_id: nil).first
+  stage = stage_conversation.stage
+  count = 1
+
+  while count < 6
+    spacing('Stage Uploads')
+    message = stage_conversation.messages.sample
+    upload = Upload.new(uploadable_id: message.id, uploadable_type: Message, user_id: message.user.id, stage_id: stage.id, media_type: 'vid')
+    upload.save
+    image_path = "#{Dir.pwd}/db/stages/Bar2000/partying#{count}.mp4"
+    upload.media.attach(
+      io: File.open(image_path),
+      filename: "partying#{count}.mp4",
+      content_type: 'video'
+    )
+    count += 1
+  end
 end
+
+

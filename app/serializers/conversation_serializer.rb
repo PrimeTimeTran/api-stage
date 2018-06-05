@@ -6,6 +6,8 @@ class ConversationSerializer < ApplicationSerializer
              :name,
              :is_stage
 
+  has_many :uploads
+
   def last_message
     message = object.messages.last
     body = "You: " + message.body if scope.id == message.user_id

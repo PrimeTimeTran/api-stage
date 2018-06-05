@@ -4,4 +4,8 @@ class StageDecorator < ApplicationDecorator
   def active_users
     object.conversations.first.user_conversations.count
   end
+
+  def conversation_id
+    object.conversations.first.id
+  end
 end

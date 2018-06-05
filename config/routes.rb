@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post 'auth/login', to: 'authentication#authenticate'
 
     # Resources
+    resources :users
     resources :posts
     resources :stages
     resources :sessions

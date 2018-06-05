@@ -6,4 +6,6 @@ class UserSerializer < ApplicationSerializer
   def full_name
     decorated.full_name
   end
+
+  has_many :uploads
 end

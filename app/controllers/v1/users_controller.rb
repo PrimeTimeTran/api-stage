@@ -12,6 +12,11 @@ module V1
       json_response(response.to_json)
     end
 
+    def show
+      @user = User.find(params[:id])
+      render json: @user
+    end
+
     private
 
     def user_params
