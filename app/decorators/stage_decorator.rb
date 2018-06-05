@@ -8,4 +8,8 @@ class StageDecorator < ApplicationDecorator
   def conversation_id
     object.conversations.first.id
   end
+
+  def business_address
+    "#{object.address}, #{object.city}"
+  end
 end

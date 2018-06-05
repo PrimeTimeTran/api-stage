@@ -1,13 +1,11 @@
 class StageSerializer < ApplicationSerializer
   attributes :id,
              :name,
-             :address,
              :district,
-             :city,
-             :country,
              :phone,
              :active_users,
-             :conversation_id
+             :conversation_id,
+             :business_address
 
   has_many :uploads
 
@@ -17,5 +15,9 @@ class StageSerializer < ApplicationSerializer
 
   def conversation_id
     decorated.conversation_id
+  end
+
+  def business_address
+    decorated.business_address
   end
 end

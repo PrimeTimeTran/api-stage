@@ -14,4 +14,8 @@ class UserDecorator < ApplicationDecorator
       'https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png'
     end
   end
+
+  def location
+    "#{object.city}, #{object.country}"
+  end
 end
