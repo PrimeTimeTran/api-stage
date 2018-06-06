@@ -133,7 +133,7 @@ if Post.first.nil?
   10.times do
     post = Post.new(
       user_id: User.all.sample.id,
-      body: Faker::Lorem.paragraphs((1..5).to_a.sample, true).join(' ')
+      body: Faker::Lorem.paragraphs((1..3).to_a.sample, true).join(' ')
     )
     post.created_at = Faker::Time.between(DateTime.now - 1, DateTime.now)
     post.save
