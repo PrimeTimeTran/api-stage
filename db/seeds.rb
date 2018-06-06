@@ -129,7 +129,6 @@ end
 if Post.first.nil?
   spacing('Posts')
   types = ['like', 'heart', 'wow', 'laugh', 'sad']
-  users = User.all
 
   10.times do
     post = Post.new(
@@ -141,11 +140,11 @@ if Post.first.nil?
 
     (1..5).to_a.sample.times do
       spacing('Comments')
-      post.comments.create!(user_id: users.sample.id, body: Faker::Lorem.paragraph(1, true, 5))
+      post.comments.create!(user_id: User.all.sample.id, body: Faker::Lorem.paragraph(1, true, 5))
     end
     (0..10).to_a.sample.times do
       spacing('Reactions')
-      post.reactions.create!(user_id: users.sample.id, reaction_type: types.sample)
+      post.reactions.create!(user_id: User.all.sample.id, reaction_type: types.sample)
     end
   end
 end
@@ -157,7 +156,7 @@ if Message.first.nil?
   private_conversations.each do |conversation|
     spacing('Private Conversations')
     user_ids = conversation.users.to_a.collect(&:id)
-    messages_count = (10..30).to_a.sample
+    messages_count = (5..15).to_a.sample
     messages_count.times do
       Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 6))
     end
@@ -168,30 +167,29 @@ if Message.first.nil?
   stage_conversations.each do |conversation|
     spacing('Stage Conversations')
     user_ids = conversation.users.to_a.collect(&:id)
-    messages_count = (10..25).to_a.sample
+    messages_count = (10..20).to_a.sample
     messages_count.times do
       message = Message.create!(user_id: user_ids.sample, conversation: conversation, body: Faker::Lorem.paragraph(1, true, 8))
     end
   end
 
+  (1..4).to_a.each do |num|
+    stage_conversation = Conversation.where.not(stage_id: nil)[num]
+    stage = stage_conversation.stage
+    count = 1
 
-  stage_conversation = Conversation.where.not(stage_id: nil).first
-  stage = stage_conversation.stage
-  count = 1
-
-  while count < 6
-    spacing('Stage Uploads')
-    message = stage_conversation.messages.sample
-    upload = Upload.new(uploadable_id: message.id, uploadable_type: Message, user_id: message.user.id, stage_id: stage.id, media_type: 'vid')
-    upload.save
-    image_path = "#{Dir.pwd}/db/stages/Bar2000/partying#{count}.mp4"
-    upload.media.attach(
-      io: File.open(image_path),
-      filename: "partying#{count}.mp4",
-      content_type: 'video'
-    )
-    count += 1
+    while count < 4
+      spacing('Stage Uploads')
+      message = stage_conversation.messages.sample
+      upload = Upload.new(uploadable_id: message.id, uploadable_type: Message, user_id: message.user.id, stage_id: stage.id, media_type: 'vid')
+      upload.save
+      image_path = "#{Dir.pwd}/db/stages/Bar2000/partying#{count}.mp4"
+      upload.media.attach(
+        io: File.open(image_path),
+        filename: "partying#{count}.mp4",
+        content_type: 'video'
+      )
+      count += 1
+    end
   end
 end
-
-

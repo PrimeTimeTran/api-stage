@@ -7,7 +7,11 @@ module V1
     # POST /signup
     # return authenticated token upon signup
     def create
-      user = User.create!(user_params)
+      user = User.create!(email: params[:email],
+                          password: params[:password],
+                          password_confirmation: params[:password],
+                          first_name: Faker::Name.first_name,
+                          last_name: Faker::Name.last_name)
       response = AuthenticateUser.new(user.email, user.password).call
       json_response(response.to_json)
     end
@@ -20,13 +24,7 @@ module V1
     private
 
     def user_params
-      params.require(:user).permit(
-        :email,
-        :password,
-        :password_confirmation,
-        :first_name,
-        :last_name
-      )
+      params.require(:user).permit(:email, :password)
     end
   end
 end
