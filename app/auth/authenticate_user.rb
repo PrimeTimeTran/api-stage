@@ -28,6 +28,6 @@ class AuthenticateUser
   def user
     user = User.find_by(email: email)
     return user if user&.valid_password?(password)
-    raise(ExceptionHandler::AuthenticationError, Info.invalid_credentials)
+    raise(ExceptionHandler::AuthenticationError, Info.invalid_password)
   end
 end

@@ -5,8 +5,8 @@ class Info
     "Sorry, #{record} not found."
   end
 
-  def self.invalid_credentials
-    'Invalid credentials'
+  def self.invalid_password
+    'Invalid password'
   end
 
   def self.invalid_token

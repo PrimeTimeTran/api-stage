@@ -17,6 +17,8 @@ class UserBuilder
     @user
   end
 
+  private
+
   def first_name
     Faker::Name.first_name
   end
