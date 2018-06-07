@@ -6,8 +6,8 @@ class UserSerializer < ApplicationSerializer
              :first_name,
              :full_name,
              :location,
-             :occupation
-  has_many :uploads
+             :occupation,
+             :uploads
 
   def full_name
     decorated.full_name
@@ -15,5 +15,9 @@ class UserSerializer < ApplicationSerializer
 
   def location
     decorated.location
+  end
+
+  def uploads
+    decorated.profile_uploads
   end
 end
