@@ -72,3 +72,49 @@ Rails.application.configure do
     end
   end
 end
+
+module ShowWithRange
+  def show
+    if params[:content_type] == 'video/mp4'
+      if key = decode_verified_key
+        active_storage_disk_service =
+          ActiveStorage::Service::DiskService.new(
+            root: Rails.root.to_s + '/storage/'
+          )
+        path = active_storage_disk_service.send(:path_for, key)
+        show_with_range(path)
+      else
+        head :not_found
+      end
+    else
+      super
+    end
+  end
+
+  def show_with_range(path)
+    if File.exist?(path)
+      file_size = File.size(path)
+      begin_point = 0
+      end_point = file_size - 1
+      status = 200
+      if request.headers['range']
+        status = 206
+        if request.headers['range'] =~ /bytes\=(\d+)\-(\d*)/
+          begin_point = $1.to_i
+          end_point = $2.to_i if $2.present?
+        end
+      end
+      content_length = end_point - begin_point + 1
+      response.header['Content-Range'] = "bytes #{begin_point}-#{end_point}/#{file_size}"
+        response.header['Content-Length'] = content_length.to_s
+        response.header['Accept-Ranges'] = 'bytes'
+        send_data IO.binread(path, content_length, begin_point), :status => status
+      else
+        raise ActionController::MissingFile, "Cannot read file #{path}"
+    end
+  end
+end
+
+ActiveStorage::DiskController.class_eval do
+  prepend ShowWithRange
+end
