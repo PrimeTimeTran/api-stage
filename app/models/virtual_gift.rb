@@ -1,0 +1,2 @@
+class VirtualGift < ApplicationRecord
+end
