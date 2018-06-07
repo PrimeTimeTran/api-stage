@@ -130,7 +130,7 @@ if Post.first.nil?
   spacing('Posts')
   types = ['like', 'heart', 'wow', 'laugh', 'sad']
 
-  10.times do
+  5.times do
     post = Post.new(
       user_id: User.all.sample.id,
       body: Faker::Lorem.paragraphs((1..3).to_a.sample, true).join(' ')
@@ -138,11 +138,11 @@ if Post.first.nil?
     post.created_at = Faker::Time.between(DateTime.now - 1, DateTime.now)
     post.save
 
-    (1..5).to_a.sample.times do
+    (1..3).to_a.sample.times do
       spacing('Comments')
       post.comments.create!(user_id: User.all.sample.id, body: Faker::Lorem.paragraph(1, true, 5))
     end
-    (0..10).to_a.sample.times do
+    (0..7).to_a.sample.times do
       spacing('Reactions')
       post.reactions.create!(user_id: User.all.sample.id, reaction_type: types.sample)
     end

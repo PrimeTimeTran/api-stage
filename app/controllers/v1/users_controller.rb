@@ -5,8 +5,9 @@ module V1
     skip_before_action :authorize_request, only: :create
 
     def create
-      UserBuilder.new(params[:email], params[:password]) unless User.find_by(email: params[:email])
-      response = AuthenticateUser.new(params[:email], params[:password]).call
+      email = params[:email].downcase
+      UserBuilder.new(email, params[:password]) unless User.find_by(email: email)
+      response = AuthenticateUser.new(email, params[:password]).call
       json_response(response.to_json)
     end
 
