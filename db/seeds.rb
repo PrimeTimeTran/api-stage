@@ -179,6 +179,7 @@ if Message.first.nil?
     count = 1
 
     while count < 4
+      video = (1..8).to_a.sample
       spacing('Stage Uploads')
       message = stage_conversation.messages.sample
       upload = Upload.new(uploadable_id: message.id, uploadable_type: Message, user_id: message.user.id, stage_id: stage.id, media_type: 'vid')
@@ -186,7 +187,7 @@ if Message.first.nil?
       image_path = "#{Dir.pwd}/db/stages/Bar2000/partying#{count}.mp4"
       upload.media.attach(
         io: File.open(image_path),
-        filename: "partying#{count}.mp4",
+        filename: "partying#{video}.mp4",
         content_type: 'video'
       )
       count += 1

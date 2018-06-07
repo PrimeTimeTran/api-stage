@@ -14,7 +14,7 @@ class PostSerializer < ApplicationSerializer
              :reactions_sad,
              :uploads
 
-  has_one :user
+  belongs_to :user
   has_many :comments
   has_many :reactions
   has_many :uploads
