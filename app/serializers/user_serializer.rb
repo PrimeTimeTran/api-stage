@@ -6,6 +6,7 @@ class UserSerializer < ApplicationSerializer
              :first_name,
              :full_name,
              :location,
+             :description,
              :occupation,
              :uploads
 
@@ -17,7 +18,12 @@ class UserSerializer < ApplicationSerializer
     decorated.location
   end
 
+  # def uploads
+  #   decorated.profile_uploads
+  # end
+
   def uploads
-    decorated.profile_uploads
+    photos = decorated.profile_uploads.map {|u| u.media }
+    photos.map {|photo| { id: photo.id, url: url_for(photo)}}
   end
 end

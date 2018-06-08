@@ -30,7 +30,7 @@ if User.first.nil?
 
   people = [
     { first_name: 'Charles', last_name: 'Lee', email: 'charles@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Developer', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Christine', last_name: 'Nguyen', email: 'christine@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Columbida', description: Faker::Lorem.paragraph(5, true, 10) },
+    { first_name: 'Christine', last_name: 'Nguyen', email: 'christine@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Columbia', description: Faker::Lorem.paragraph(5, true, 10) },
     { first_name: 'Do', last_name: 'Le', email: 'do@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Chanel', description: Faker::Lorem.paragraph(5, true, 10) },
     { first_name: 'Duc', last_name: 'Viettel', email: 'duc@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Director', description: Faker::Lorem.paragraph(5, true, 10) },
     { first_name: 'Gigi', last_name: 'Pham', email: 'gigi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Loan Officer', description: Faker::Lorem.paragraph(5, true, 10) },
