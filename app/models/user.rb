@@ -25,4 +25,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+
+  has_many :sent_gifts, foreign_key: 'sender_id', class_name: 'VirtualGift'
+  has_many :received_gifts, foreign_key: 'receiver_id', class_name: 'VirtualGift'
 end

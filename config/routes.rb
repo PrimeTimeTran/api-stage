@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
     # Resources
     resources :users
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
+
     resources :stages
     resources :sessions
     resources :conversations do
