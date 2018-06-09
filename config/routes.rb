@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     # Resources
     resources :users
     resources :posts do
-      resoucres :comments
+      resources :comments
     end
 
     resources :stages
