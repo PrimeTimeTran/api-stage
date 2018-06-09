@@ -17,7 +17,7 @@ module V1
 
     # POST /posts
     def create
-      @post = Post.new(post_params)
+      @post = current_user.posts.build(body: params[:body])
 
       if @post.save
         if upload_params
@@ -28,7 +28,7 @@ module V1
             media.save
           end
         end
-        @post
+        render json: @post
       else
         render json: @post.errors, status: :unprocessable_entity
       end
