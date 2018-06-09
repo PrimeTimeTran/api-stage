@@ -24,6 +24,6 @@ class UserSerializer < ApplicationSerializer
 
   def uploads
     photos = decorated.profile_uploads.map {|u| u.media }
-    photos.map {|photo| { id: photo.id, url: url_for(photo)}}
+    photos.map {|photo| { id: photo.id, url: url_for(photo)}}.reverse
   end
 end

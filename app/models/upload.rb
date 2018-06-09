@@ -4,4 +4,5 @@ class Upload < ApplicationRecord
   has_one_attached :media
   has_many :reactions, as: :reactionable
   has_many :comments, as: :commentable
+  default_scope { order(created_at: 'ASC') }
 end
