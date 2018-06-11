@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :sessions
     resources :conversations do
       resources :messages
+      member do
+        get 'users'
+      end
     end
 
     # Utilities
