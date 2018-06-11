@@ -42,7 +42,7 @@ Rails.application.configure do
 
   # Loi's configuration to work locally
   # Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
-  Rails.application.routes.default_url_options[:host] = 'http://localhost:3000'
+  Rails.application.routes.default_url_options[:host] = 'http://192.168.1.218:3000'
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
