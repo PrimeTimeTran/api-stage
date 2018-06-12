@@ -2,6 +2,7 @@
 
 class UserSerializer < ApplicationSerializer
   attributes :id,
+             :age,
              :avatar_url,
              :first_name,
              :full_name,

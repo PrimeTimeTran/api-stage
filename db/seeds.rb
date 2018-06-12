@@ -5,6 +5,14 @@ def spacing(name)
   p("====================================================")
 end
 
+def age
+  (18..30).to_a.sample
+end
+
+def description
+  Faker::Lorem.paragraph(5, true, 10)
+end
+
 if User.first.nil?
   spacing('Loi')
   loi = User.create!(email: 'datloiboi@gmail.com',
@@ -15,7 +23,8 @@ if User.first.nil?
                      city: 'Ho Chi Minh City',
                      country: 'Vietnam',
                      occupation: 'Developer',
-                     description: "People told me stop, you're crazy. I said fuck it, I'm doing it anyway.")
+                     description: "People told me stop, you're crazy. I said fuck it, I'm doing it anyway.",
+                     age: 30)
 
   (1..5).to_a.each do |file|
   image_path = "#{Dir.pwd}/db/people/loi/#{file}.jpg"
@@ -29,28 +38,28 @@ if User.first.nil?
   end
 
   people = [
-    { first_name: 'Charles', last_name: 'Lee', email: 'charles@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Developer', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Christine', last_name: 'Nguyen', email: 'christine@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Columbia', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Do', last_name: 'Le', email: 'do@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Chanel', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Duc', last_name: 'Viettel', email: 'duc@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Director', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Gigi', last_name: 'Pham', email: 'gigi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Loan Officer', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Harley', last_name: 'Dinh', email: 'harley@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Head of Engineering', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Hien', last_name: 'Nguyen', email: 'hien@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Sales Director', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Kas', last_name: 'Patel', email: 'vikas@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business Owner', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Khanh', last_name: 'Vo', email: 'khanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Photographer', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Linh', last_name: 'Ha', email: 'linh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'KTV Manager', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Mikey', last_name: 'Banks', email: 'mikey@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business Owner', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Mimi', last_name: 'Doan', email: 'mimi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'College Student', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'My', last_name: 'Pham', email: 'my@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Account', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Nhung', last_name: 'Tran', email: 'nhung@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Sales & Marketing', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Phan', last_name: 'Bui', email: 'phan@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Digital Nomad', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Phuong', last_name: 'Tran', email: 'phuong@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Dealer', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Tai', last_name: 'Tran', email: 'tai@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Registered Nurse', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Thanh', last_name: 'Boo', email: 'thanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Startup Founder', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Thao', last_name: 'Tran', email: 'thao@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Information Technology', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Uyen', last_name: 'Dang', email: 'uyen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Registered Nurse', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Van', last_name: 'Luu', email: 'van@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Makeup Artist', description: Faker::Lorem.paragraph(5, true, 10) },
-    { first_name: 'Yen', last_name: 'Nguyen', email: 'yen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business owner', description: Faker::Lorem.paragraph(5, true, 10) }
+    { first_name: 'Charles', last_name: 'Lee', email: 'charles@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Developer', description: description, age: age },
+    { first_name: 'Christine', last_name: 'Nguyen', email: 'christine@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Hanoi', country: 'Vietnam', occupation: 'Columbia', description: description, age: age },
+    { first_name: 'Do', last_name: 'Le', email: 'do@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Chanel', description: description, age: age },
+    { first_name: 'Duc', last_name: 'Viettel', email: 'duc@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Hanoi', country: 'Vietnam', occupation: 'Director', description: description, age: age },
+    { first_name: 'Gigi', last_name: 'Pham', email: 'gigi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Loan Officer', description: description, age: age },
+    { first_name: 'Harley', last_name: 'Dinh', email: 'harley@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Head of Engineering', description: description, age: age },
+    { first_name: 'Hien', last_name: 'Nguyen', email: 'hien@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Sales Director', description: description, age: age },
+    { first_name: 'Kas', last_name: 'Patel', email: 'vikas@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business Owner', description: description, age: age },
+    { first_name: 'Khanh', last_name: 'Vo', email: 'khanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Photographer', description: description, age: age },
+    { first_name: 'Linh', last_name: 'Ha', email: 'linh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Hanoi', country: 'Vietnam', occupation: 'KTV Manager', description: description, age: age },
+    { first_name: 'Mikey', last_name: 'Banks', email: 'mikey@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Miami', country: 'U.S.A.', occupation: 'Business Owner', description: description, age: age },
+    { first_name: 'Mimi', last_name: 'Doan', email: 'mimi@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'College Student', description: description, age: age },
+    { first_name: 'My', last_name: 'Pham', email: 'my@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Account', description: description, age: age },
+    { first_name: 'Nhung', last_name: 'Tran', email: 'nhung@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Sales & Marketing', description: description, age: age },
+    { first_name: 'Phan', last_name: 'Bui', email: 'phan@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Digital Nomad', description: description, age: age },
+    { first_name: 'Phuong', last_name: 'Tran', email: 'phuong@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Dealer', description: description, age: age },
+    { first_name: 'Tai', last_name: 'Tran', email: 'tai@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Panama City', country: 'U.S.A.', occupation: 'Registered Nurse', description: description, age: age },
+    { first_name: 'Thanh', last_name: 'Boo', email: 'thanh@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Hanoi', country: 'Vietnam', occupation: 'Startup Founder', description: description, age: age },
+    { first_name: 'Thao', last_name: 'Tran', email: 'thao@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Tallahassee', country: 'U.S.A.', occupation: 'Information Technology', description: description, age: age },
+    { first_name: 'Uyen', last_name: 'Dang', email: 'uyen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Registered Nurse', description: description, age: age },
+    { first_name: 'Van', last_name: 'Luu', email: 'van@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Hanoi', country: 'Vietnam', occupation: 'Makeup Artist', description: description, age: age },
+    { first_name: 'Yen', last_name: 'Nguyen', email: 'yen@gmail.com', password: 'asdfas', password_confirmation: 'asdfas', city: 'Ho Chi Minh City', country: 'Vietnam', occupation: 'Business owner', description: description, age: age },
   ]
 
   people.each do |person|
