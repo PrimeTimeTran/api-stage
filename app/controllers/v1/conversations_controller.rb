@@ -1,7 +1,7 @@
 module V1
   class ConversationsController < ApplicationController
     def index
-      conversations = current_user.conversations
+      conversations = current_user.conversations.eager_load(:messages, :users)
       render json: conversations
     end
 
