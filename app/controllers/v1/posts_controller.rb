@@ -6,7 +6,7 @@ module V1
 
     # GET /posts
     def index
-      @posts = Post.eager_load(:comments, :reactions, :uploads).page(@page).per(@per_page)
+      @posts = Post.includes(:comments, :reactions, :uploads).page(@page).per(@per_page)
       render json: @posts
     end
 
