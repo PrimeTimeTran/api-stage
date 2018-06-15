@@ -7,4 +7,6 @@ class Post < ApplicationRecord
 
   validates_presence_of :body
   has_many :uploads, as: :uploadable, dependent: :destroy
+
+  default_scope { order(created_at: 'DESC') }
 end
