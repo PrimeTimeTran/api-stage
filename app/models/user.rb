@@ -28,4 +28,9 @@ class User < ApplicationRecord
 
   has_many :sent_gifts, foreign_key: 'sender_id', class_name: 'VirtualGift'
   has_many :received_gifts, foreign_key: 'receiver_id', class_name: 'VirtualGift'
+
+  private
+  def self.search(search)
+    where(['first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
 end

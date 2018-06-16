@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     post 'auth/login', to: 'authentication#authenticate'
 
     # Resources
-    resources :users
+    resources :users do
+      collection do
+        get 'search'
+      end
+    end
+
     resources :posts do
       resources :comments
     end

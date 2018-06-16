@@ -12,8 +12,13 @@ module V1
     end
 
     def show
-      @user = User.find(params[:id])
-      render json: @user
+      user = User.find(params[:id])
+      render json: user
+    end
+
+    def search
+      users = User.search(params[:q])
+      render json: users
     end
   end
 end
