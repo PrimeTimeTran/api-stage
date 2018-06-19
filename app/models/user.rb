@@ -31,6 +31,6 @@ class User < ApplicationRecord
 
   private
   def self.search(search)
-    where(['first_name LIKE ? OR last_name LIKE ? OR phone_number LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+    where(['first_name ILIKE :search OR last_name ILIKE :search OR phone_number ILIKE :search OR email ILIKE :search', search: "%#{search}%"])
   end
 end

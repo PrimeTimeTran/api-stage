@@ -1,7 +1,7 @@
 module V1
   class ConversationsController < ApplicationController
     def index
-      conversations = current_user.conversations.eager_load(:messages, :users).page(@page).per(@per_page)
+      conversations = current_user.conversations.includes(users:{messages: :upload}).page(@page).per(@per_page)
       render json: conversations
     end
 
