@@ -10,4 +10,7 @@ class Conversation < ApplicationRecord
   has_many :uploads, through: :messages, source: :upload
 
   default_scope { order(updated_at: 'DESC') }
+
+  # TODO: need to search by message as well
+  scope :search, -> (keyword) { where('name LIKE ?', "%#{keyword}%") }
 end
