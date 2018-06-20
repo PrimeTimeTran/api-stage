@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :reactions, only: [:create, :destroy]
+
     resources :posts do
       resources :comments
     end

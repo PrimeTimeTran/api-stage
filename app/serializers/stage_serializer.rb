@@ -5,7 +5,8 @@ class StageSerializer < ApplicationSerializer
              :phone,
              :active_users,
              :conversation_id,
-             :business_address
+             :business_address,
+             :is_following
 
   has_many :uploads
 
@@ -19,5 +20,9 @@ class StageSerializer < ApplicationSerializer
 
   def business_address
     decorated.business_address
+  end
+
+  def is_following
+    scope.stage_conversations.include?(decorated.conversations.first)
   end
 end
