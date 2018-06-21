@@ -9,7 +9,7 @@ class ConversationSerializer < ApplicationSerializer
   has_many :uploads
 
   def last_message
-    message = object.messages.first
+    message = object.messages.last
     body = "You: " + message.body if scope.id == message.user_id
     {
       body: (body || message.body),
