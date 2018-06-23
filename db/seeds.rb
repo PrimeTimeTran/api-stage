@@ -105,12 +105,12 @@ if Stage.first.nil?
   stages = [
     { name: 'Bar2000', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 6', address: '171 Chợ Lớn', phone: '+84 28 3876 6217' },
     { name: '212', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '212 Nguyễn Trãi', phone: '+84 12 174 9131' },
-    { name: 'EnvyNightClub', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '74-76 Nam Kỳ Khởi Nghĩa', phone: '+84 28 3913 8168' },
+    { name: 'EnvyNightclub', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '74-76 Nam Kỳ Khởi Nghĩa', phone: '+84 28 3913 8168' },
     { name: 'Glow', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '93 Nguyễn Du, Bến Nghé', phone: '+84 93 887 4569' },
     { name: 'Lush', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '2 Lý Tự Trọng, Bến Nghé', phone: '+84 91 863 0742' },
     { name: 'ApocalypseNow', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '2B Thi Sách', phone: '+84 28 3825 6124' },
     { name: 'RepublicClub', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: '19 Đỗ Quang Đẩu', phone: '+84 90 236 8592' },
-    { name: 'ChillSkyBar', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: 'AB Tower, 76A Lê Lai', phone: '+84 93 882 2838' }
+    { name: 'ChillSkybar', city: 'Hồ Chí Minh', country: 'Vietnam', district: 'Quận 1', address: 'AB Tower, 76A Lê Lai', phone: '+84 93 882 2838' }
   ]
 
   stages.each do |stage|
