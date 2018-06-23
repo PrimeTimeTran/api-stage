@@ -64,3 +64,5 @@ gem 'rack-cors'
 
 # Pagination
 gem 'kaminari'
+
+gem 'dotenv-rails'

@@ -16,6 +16,10 @@ module V1
       render json: user
     end
 
+    def update
+
+    end
+
     def search
       users = User.search(params[:q])
       render json: users

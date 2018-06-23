@@ -154,6 +154,11 @@ if Post.first.nil?
       post.reactions.create!(user_id: User.all.sample.id, reaction_type: types.sample)
     end
   end
+  Reaction.create!(user_id: 10, reactionable_type: Post, reactionable_id: Post.first.id, reaction_type: 0)
+  Reaction.create!(user_id: 2, reactionable_type: Post, reactionable_id: Post.first.id, reaction_type: 1)
+  Reaction.create!(user_id: 3, reactionable_type: Post, reactionable_id: Post.first.id, reaction_type: 2)
+  Reaction.create!(user_id: 4, reactionable_type: Post, reactionable_id: Post.first.id, reaction_type: 3)
+  Reaction.create!(user_id: 5, reactionable_type: Post, reactionable_id: Post.first.id, reaction_type: 4)
 end
 
 
