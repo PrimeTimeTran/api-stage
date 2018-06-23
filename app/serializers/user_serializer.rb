@@ -2,13 +2,17 @@
 
 class UserSerializer < ApplicationSerializer
   attributes :id,
+             :first_name,
+             :last_name,
+             :email,
+             :city,
+             :country,
+             :occupation,
+             :description,
              :age,
              :avatar_url,
-             :first_name,
              :full_name,
              :location,
-             :description,
-             :occupation,
              :uploads
 
   def full_name
