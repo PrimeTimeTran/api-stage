@@ -28,6 +28,7 @@ class UserSerializer < ApplicationSerializer
   # end
 
   def uploads
+    return [] if instance_options[:without_uploads]
     photos = decorated.profile_uploads.map {|u| u.media }
     photos.map {|photo| { id: photo.id, url: url_for(photo)}}.reverse
   end

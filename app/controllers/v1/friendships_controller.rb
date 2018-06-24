@@ -6,7 +6,7 @@ module V1
       # render json: ActiveModel::Serializer::CollectionSerializer.new(friends, each_serializer: UserSerializer, except: [:uploads])
       # render json: ActiveModel::Serializer::CollectionSerializer.new(friends, serializer: UserSerializer, except: [:uploads])
       # render json: ActiveModel::Serializer::CollectionSerializer.new(friends, serializer: UserSerializer)
-      render json: friends
+      render json: friends, without_uploads: true
     end
   end
 end
