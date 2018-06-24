@@ -8,27 +8,28 @@ Rails.application.routes.draw do
     post 'signup', to: 'users#create'
     post 'auth/login', to: 'authentication#authenticate'
 
-    # Resources
     resources :users do
       collection do
         get 'search'
       end
     end
 
-    resources :reactions, only: [:create, :destroy]
-
-    resources :posts do
-      resources :comments
-    end
-
-    resources :stages
-    resources :sessions
     resources :conversations do
       resources :messages
       member do
         get 'users'
       end
     end
+
+    resources :posts do
+      resources :comments
+    end
+
+
+    resources :stages
+    resources :reactions, only: [:create, :destroy]
+    resources :friendships
+    resources :sessions
 
     # Utilities
     get 'home/index'
