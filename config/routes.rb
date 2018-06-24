@@ -32,8 +32,9 @@ Rails.application.routes.draw do
 
     # Utilities
     get 'home/index'
-    root to: 'home#index'
   end
+
+  root to: 'home#index'
 
   devise_for :users
 
