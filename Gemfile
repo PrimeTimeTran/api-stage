@@ -39,6 +39,12 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # for deployment
+  gem 'capistrano', '~> 3.11.0'
+  gem 'capistrano-bundler', '~> 1.3.0'
+  gem 'capistrano-rails', '~> 1.4.0'
+  gem 'capistrano-rbenv', '~> 2.1.3'
 end
 
 group :test do
@@ -66,3 +72,5 @@ gem 'rack-cors'
 gem 'kaminari'
 
 gem 'dotenv-rails'
+
+gem 'unicorn', '~> 5.4.0'
