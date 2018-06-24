@@ -18,7 +18,7 @@ else
   listen '/tmp/getonstage.sock'
 end
 worker_processes \
-  (ENV['RACK_ENV'] || ENV['RAILS_ENV']) == 'production' ? 4 : 1
+  (ENV['RACK_ENV'] || ENV['RAILS_ENV']) == 'production' ? 4 : 4
 preload_app true
 timeout 3000
 
