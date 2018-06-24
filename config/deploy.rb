@@ -13,6 +13,7 @@ set :rbenv_map_bins,
 
 # how many old releases do we want to keep
 set :keep_releases, 2
+set :rbenv_ruby, '2.5.0'
 
 # files we want symlinking to specific entries in shared.
 set :linked_files, %w[config/database.yml .rbenv-vars]
@@ -80,9 +81,9 @@ namespace :unicorn do
   desc 'Create Directories for Puma Pids and Socket'
   task :start do
     on roles(:app) do
-      execute %(
-        bin/unicorn -c #{release_path}/config/unicorn.rb -E #{fetch(:rails_env)} -D
-      )
+      within "#{current_path}" do
+        execute :bundle, :exec, "unicorn -c config/unicorn.rb -D"
+      end
     end
   end
 
@@ -90,11 +91,7 @@ namespace :unicorn do
     on roles(:app) do
       unicorn_pid = "#{shared_path}/tmp/pids/getonstage.pid"
       execute \
-        %(
-          test -s "#{unicorn_pid}" && kill -s USR2 `cat "#{unicorn_pid}"` && \
-echo "Restart Ok" && exit
-          bin/unicorn -c #{release_path}/config/unicorn.rb -E #{fetch(:rails_env)} -D
-        )
+        execute "if [ -f #{unicorn_pid} ]; then kill -USR2 `cat #{unicorn_pid}`; fi"
     end
   end
 

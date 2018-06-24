@@ -1,5 +1,5 @@
 rails_env = ENV['RACK_ENV'] || ENV['RAILS_ENV']
-app_path = '/home/ubuntu/www/getonstage'
+app_path = '/home/ubuntu/www/getonstage/rails'
 app_root = "#{app_path}/current"
 
 Dir.chdir(Unicorn::HttpServer::START_CTX[:cwd] = app_root)
