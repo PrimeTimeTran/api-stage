@@ -82,7 +82,7 @@ namespace :unicorn do
   task :start do
     on roles(:app) do
       within "#{current_path}" do
-        execute :bundle, :exec, "unicorn -c config/unicorn.rb -D"
+        execute :bundle, :exec, "unicorn -c config/unicorn.rb -D -E #{fetch(:rails_env)}"
       end
     end
   end
