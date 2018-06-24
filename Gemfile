@@ -74,3 +74,4 @@ gem 'kaminari'
 gem 'dotenv-rails'
 
 gem 'unicorn', '~> 5.4.0'
+gem 'mailgun-ruby', '~> 1.1.6'
