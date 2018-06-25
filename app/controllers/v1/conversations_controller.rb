@@ -17,7 +17,7 @@ module V1
 
     def users
       users = Conversation.find(params[:id]).users
-      render json: users
+      render json: users, without_email: true, without_uploads: true
     end
 
     def show

@@ -4,7 +4,6 @@ class UserSerializer < ApplicationSerializer
   attributes :id,
              :first_name,
              :last_name,
-             :email,
              :city,
              :country,
              :occupation,
@@ -23,9 +22,10 @@ class UserSerializer < ApplicationSerializer
     decorated.location
   end
 
-  # def uploads
-  #   decorated.profile_uploads
-  # end
+  def email
+    return nil if instance_options[:without_email]
+    decorated.email
+  end
 
   def uploads
     return [] if instance_options[:without_uploads]
