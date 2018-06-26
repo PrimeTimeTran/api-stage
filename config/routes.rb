@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
 
     resources :stages
+    resources :user_conversations
     resources :reactions, only: [:create, :destroy]
     resources :friendships
     resources :sessions
