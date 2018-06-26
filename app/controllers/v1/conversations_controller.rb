@@ -27,8 +27,17 @@ module V1
 
       render json: {
         user_count: user_count,
-        stage_name: stage_name
+        stage_name: stage_name,
+        stage_id: conversation.stage_id
       }
+
+      # stage = Conversation.find(params[:id]).stage.decorate
+      # stage_name = stage.active_users
+
+      # render json: {
+      #   user_count: stage.active_users,
+      #   stage: stage.id
+      # }
     end
   end
 end

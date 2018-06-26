@@ -3,12 +3,12 @@
 module V1
   class StagesController < ApplicationController
     def index
-      @stages = Stage.all.order('created_at DESC')
-      render json: @stages
+      stages = Stage.all.order('created_at DESC')
+      render json: stages
     end
 
     def show
-      @stage = Stage.find(params[:id])
+      stage = Stage.find(params[:id])
     end
   end
 end

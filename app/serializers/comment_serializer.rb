@@ -12,7 +12,7 @@ class CommentSerializer < ApplicationSerializer
     user = object.user.decorate
     {
       full_name: user.full_name,
-      user_profile_photo: user.decorate.most_recent_profile_photo,
+      user_profile_photo: user.most_recent_profile_photo,
     }
   end
 
