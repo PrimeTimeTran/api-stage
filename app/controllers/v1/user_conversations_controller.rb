@@ -12,8 +12,8 @@ module V1
     end
 
     def destroy
-      conversation = current_user.stage_conversations.where(stage_id: params[:id])[0].id
-      user_conversation = current_user.user_conversations.where(conversation_id: conversation)[0]
+      conversation = current_user.stage_conversations.where(stage_id: params[:id])[0]
+      user_conversation = current_user.user_conversations.where(conversation: conversation)[0]
       if user_conversation.destroy
         render json: { following: false }, status: :ok
       else
