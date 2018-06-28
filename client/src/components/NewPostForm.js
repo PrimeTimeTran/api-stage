@@ -31,7 +31,7 @@ class NewPostForm extends Component {
   }
 
   handleFileSelect = event => {
-    this.setState({ upload: event.target.files[0] }, () => {console.log('After Setting State: ', this.state)})
+    this.setState({ upload: event.target.files[0] })
   }
 
   handleSubmit = (e) => {
