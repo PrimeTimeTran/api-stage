@@ -39,5 +39,21 @@ module V1
       #   stage: stage.id
       # }
     end
+
+    def present
+      other_user = User.find(params[:otherUserId].to_i)
+      conversation_id =
+        current_user
+        .private_conversations
+        .collect(&:user_conversations)
+        .flatten
+        .find { |uc| uc.user_id == other_user.id }
+        &.conversation_id
+
+      render json: {
+        conversation_id: conversation_id || nil,
+        other_user_name: other_user.first_name
+      }
+    end
   end
 end
