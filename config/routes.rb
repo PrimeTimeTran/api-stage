@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       member do
         get 'users'
       end
+      collection do
+        get 'present'
+      end
     end
 
     resources :posts do
