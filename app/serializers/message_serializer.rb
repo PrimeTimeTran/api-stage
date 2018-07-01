@@ -12,6 +12,8 @@ class MessageSerializer < ApplicationSerializer
       _id: object.id,
       text: object.body,
       created_at: object.created_at,
+      upload_s3_location: object.upload_s3_location,
+      image: object.upload_s3_location,
       user: {
         _id: user.id,
         name: user.full_name,
