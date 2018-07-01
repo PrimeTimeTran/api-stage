@@ -10,5 +10,16 @@ module V1
       upload = current_user.uploads.create(uploadable_type: ProfilePhoto, uploadable_id: current_user.id, media_type: 'img')
       upload.media.attach(image)
     end
+
+    def index
+      render json: current_user.decorate.profile_uploads
+    end
+
+    def destroy
+      params['selectedUploads'].each do |upload|
+        Upload.find(upload.to_i).destroy
+      end
+      render json: current_user.decorate.profile_uploads
+    end
   end
 end
