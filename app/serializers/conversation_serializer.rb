@@ -27,7 +27,7 @@ class ConversationSerializer < ApplicationSerializer
   end
 
   def other_users
-    object.users.select {|user| user.id != current_user.id }
+    object.users.select {|user| user.id != current_user.id }.tap { |hash| hash.delete(:email) }
   end
 
   def is_stage

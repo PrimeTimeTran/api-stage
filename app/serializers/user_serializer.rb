@@ -12,7 +12,8 @@ class UserSerializer < ApplicationSerializer
              :avatar_url,
              :full_name,
              :location,
-             :uploads
+             :uploads,
+             :email
 
   def full_name
     decorated.full_name
@@ -30,6 +31,6 @@ class UserSerializer < ApplicationSerializer
   def uploads
     return [] if instance_options[:without_uploads]
     photos = decorated.profile_uploads.map {|u| u.media }
-    photos.map {|photo| { id: photo.id, url: url_for(photo)}}.reverse
+    photos.map {|photo| { id: photo.id, url: url_for(photo)}}
   end
 end

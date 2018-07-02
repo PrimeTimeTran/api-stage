@@ -16,10 +16,15 @@ module V1
     end
 
     def destroy
-      params['selectedUploads'].each do |upload|
-        Upload.find(upload.to_i).destroy
-      end
+      params['uploadIds'].each { |id| Upload.find(id).destroy }
       render json: current_user.decorate.profile_uploads
+    end
+
+    def show
+      photo = current_user.decorate.most_recent_profile_photo
+      render json: {
+        most_recent_profile_photo_url: photo
+      }
     end
   end
 end

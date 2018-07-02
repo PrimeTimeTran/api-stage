@@ -11,8 +11,9 @@ class CommentSerializer < ApplicationSerializer
   def user
     user = object.user.decorate
     {
+      id: user.id,
       full_name: user.full_name,
-      user_profile_photo: user.most_recent_profile_photo,
+      user_profile_photo: user.most_recent_profile_photo
     }
   end
 
