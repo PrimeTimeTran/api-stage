@@ -29,6 +29,13 @@ class User < ApplicationRecord
   has_many :sent_gifts, foreign_key: 'sender_id', class_name: 'VirtualGift'
   has_many :received_gifts, foreign_key: 'receiver_id', class_name: 'VirtualGift'
 
+  def full_name
+    [
+      first_name,
+      last_name
+    ].compact.join(' ')
+  end
+
   private
   def self.search(search)
     where(['first_name ILIKE :search OR last_name ILIKE :search OR phone_number ILIKE :search OR email ILIKE :search', search: "%#{search}%"])

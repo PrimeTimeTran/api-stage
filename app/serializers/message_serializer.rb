@@ -1,4 +1,5 @@
 class MessageSerializer < ApplicationSerializer
+  include Rails.application.routes.url_helpers
   attributes :gifted_chat,
              :conversation_id
 
@@ -12,6 +13,7 @@ class MessageSerializer < ApplicationSerializer
       _id: object.id,
       text: object.body,
       created_at: object.created_at,
+      image: object.upload.present? ? rails_blob_url(object.upload.media) : nil,
       user: {
         _id: user.id,
         name: user.full_name,

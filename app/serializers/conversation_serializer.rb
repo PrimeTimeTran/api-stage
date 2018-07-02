@@ -10,7 +10,16 @@ class ConversationSerializer < ApplicationSerializer
 
   def last_message
     message = object.messages.last
-    body = "You: " + message.body if scope.id == message.user_id
+    if message.body.present?
+      body = "You: " + message.body if scope.id == message.user_id
+    else
+      if scope.id == message.user_id
+        body = "You: uploaded a photo"
+      else
+        body = "#{message.user.full_name} uploaded a photo"
+      end
+    end
+
     {
       body: (body || message.body),
       sent_at: time(message.updated_at)
