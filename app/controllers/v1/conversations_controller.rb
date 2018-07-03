@@ -9,11 +9,11 @@ module V1
         current_user
         .conversations
         .includes(users: { messages: :upload })
-        .page(@page)
-        .per(@per_page)
+        # .page(@page)
+        # .per(@per_page)
 
       if params[:keyword].present?
-        conversations = conversations.search(params[:keyword])
+        conversations = conversations.search(params[:keyword], current_user.id)
       end
 
       render json: conversations
