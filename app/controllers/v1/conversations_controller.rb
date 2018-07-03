@@ -1,5 +1,9 @@
 module V1
   class ConversationsController < ApplicationController
+    def create
+      ConversationBuilder.new(params[:current_user_id], params[:other_user_id])
+    end
+
     def index
       conversations =
         current_user
@@ -30,14 +34,6 @@ module V1
         stage_name: stage_name,
         stage_id: conversation.stage_id
       }
-
-      # stage = Conversation.find(params[:id]).stage.decorate
-      # stage_name = stage.active_users
-
-      # render json: {
-      #   user_count: stage.active_users,
-      #   stage: stage.id
-      # }
     end
 
     def present

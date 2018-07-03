@@ -1,6 +1,6 @@
 class ConversationSerializer < ApplicationSerializer
   attributes :id,
-             :last_message,
+             :last_message_content,
              :other_users,
              :last_message_from_user,
              :name,
@@ -8,31 +8,12 @@ class ConversationSerializer < ApplicationSerializer
 
   has_many :uploads
 
-  def last_message
-    message = object.messages.last
-    if message.body.present?
-      body = "You: " + message.body if scope.id == message.user_id
-    else
-      if scope.id == message.user_id
-        body = "You: uploaded a photo"
-      else
-        body = "#{message.user.full_name} uploaded a photo"
-      end
-    end
-
-    {
-      body: (body || message.body),
-      sent_at: time(message.updated_at)
-    }
+  def last_message_content
+    decorated.last_message_content(current_user.id)
   end
 
   def last_message_from_user
-    user = object.messages.select {|message| message.user_id != current_user.id}.last.user.decorate
-    # user = object.messages.last.user.decorate
-    {
-      name: user.full_name,
-      avatar_url: url_for(user.most_recent_profile_photo)
-    }
+    decorated.last_message_from_user(current_user.id)
   end
 
   def other_users
