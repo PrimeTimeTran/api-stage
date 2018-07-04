@@ -25,3 +25,4 @@
 specs.txt
 dump.rdb
 .rbenv-vars
+.env

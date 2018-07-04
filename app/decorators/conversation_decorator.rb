@@ -2,30 +2,48 @@ class ConversationDecorator < ApplicationDecorator
   delegate_all
 
   def last_message_from_user(current_user_id)
-    user = find_last_message_user(current_user_id)
+    user = find_last_message_user(current_user_id).decorate
     user_hash(user)
   end
 
   def last_message_content(current_user_id)
     message = object.messages.last
     if message
-      body = form_message_beginning(message, current_user_id)
+      body = add_to_body_if_mine(message, current_user_id)
       message_hash(body || message.body, message)
     else
       message_hash(call_to_action.sample, object)
     end
   end
 
+  def last_three_uploads
+    if object.uploads.present?
+      object.uploads.last(3).map { |u| transform_upload(u.decorate) }
+    else
+      []
+    end
+  end
+
+  def transform_upload(upload)
+    {
+      id: upload.id,
+      url: upload.url,
+      media_type: upload.media_type
+    }
+  end
+
   private
     def find_last_message_user(current_user_id)
-      user = object.messages.select {|message| message.user_id != current_user_id}&.last&.user&.decorate
+      user = object.messages.select { |message| message.user_id != current_user_id }
+                              &.last
+                              &.user
       return user if user
 
       new_conversation(current_user_id)
     end
 
     def new_conversation(current_user_id)
-      User.find(object.user_conversations.where("user_id != ?", current_user_id).first.user_id).decorate
+      User.find(object.user_conversations.where("user_id != ?", current_user_id).first.user_id)
     end
 
     def user_hash(user)
@@ -35,7 +53,7 @@ class ConversationDecorator < ApplicationDecorator
       }
     end
 
-    def form_message_beginning(message, current_user_id)
+    def add_to_body_if_mine(message, current_user_id)
       if message.body.present?
         "You: " + message.body if current_user_id == message.user_id
       else

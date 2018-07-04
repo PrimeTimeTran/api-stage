@@ -16,7 +16,7 @@ module V1
         conversations = conversations.search(params[:keyword], current_user.id)
       end
 
-      render json: conversations
+      render json: conversations[0..1]
     end
 
     def users
