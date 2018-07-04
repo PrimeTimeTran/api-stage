@@ -12,7 +12,7 @@ class UserDecorator < ApplicationDecorator
   end
 
   def profile_uploads
-    object.uploads.where(stage_id: nil).reverse
+    object.uploads.where(stage_id: nil).where(uploadable_type: 'ProfilePhoto').reverse
   end
 
   def most_recent_profile_photo

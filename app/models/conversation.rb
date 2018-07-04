@@ -22,10 +22,11 @@ class Conversation < ApplicationRecord
                   .collect { |uc| uc.user }
 
     matching_conversations = users.select { |u| u.first_name.include?(keyword) || u.last_name.include?(keyword) || u.email.include?(keyword) }
-                                 .collect { |u| u.private_conversations }.flatten
-                                 .collect { |c| c.user_conversations }.flatten
-                                 .select{ |uc| uc.user_id == current_user_id }
-                                 .collect { |uc| uc.conversation }
+                                    .collect { |u| u.private_conversations }.flatten
+                                    .collect { |c| c.user_conversations }.flatten
+                                    .select { |uc| uc.user_id == current_user_id }
+                                    .collect { |uc| uc.conversation }
+
     where('name LIKE ?', "%#{keyword}%") + matching_conversations
   end
 end
