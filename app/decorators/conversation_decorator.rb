@@ -25,10 +25,13 @@ class ConversationDecorator < ApplicationDecorator
   end
 
   def transform_upload(upload)
+    user = upload.user.decorate
     {
       id: upload.id,
       url: upload.url,
-      media_type: upload.media_type
+      media_type: upload.media_type,
+      user_name: user.full_name,
+      user_avatar_url: user.most_recent_profile_photo
     }
   end
 
